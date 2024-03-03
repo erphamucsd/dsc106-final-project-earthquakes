@@ -20,6 +20,12 @@
   let previousIndex = 0;
   let filterDate = sliderTimeScale(720); // Initial date for filtering earthquakes
 
+  let hovered = -1;
+  let recorded_mouse_position = {
+		x: 0, y: 0
+	};
+  let slider_time = 720;
+
   onMount(() => {
     map = new mapboxgl.Map({
       container,
@@ -104,7 +110,9 @@
       bounds._sw.lat,
     ];
   }
-
+  function handleMouseover(e,d) {
+      console.log(d)
+    }
 </script>
 
 <svelte:head>
@@ -115,6 +123,33 @@
 </svelte:head>
 
 <div class="map" class:visible={true} bind:this={container}></div>
+
+<div class="visualization" role="tooltip">
+  {#each earthquakePoints as data, index}
+    handleMouseover(data,index);
+				on:mouseover={
+				(event) => { handleMouseover(data,index);
+					hovered = index; 
+					recorded_mouse_position = {
+							x: event.pageX,
+							y: event.pageY
+						}
+				}}
+				on:mouseout={(event) => { hovered = -1; }}
+        on:focus={"blue"} 
+        on:blur={"blue"} 
+			{/each}
+
+	<div
+		class={hovered === -1 ? "tooltip-hidden": "tooltip-visible"}	
+		style="left: {recorded_mouse_position.x + 40}px; top: {recorded_mouse_position.y + 40}px"
+	>
+		{#if hovered !== -1}
+		Magnitude: {earthquakePoints[hovered].Mag}
+		{/if}
+	</div>
+</div>
+
 
 {#if index >= 9 && index <= 10}
     <input type="range" min="0" max="1440" step="1" bind:value={filterDate} />
@@ -152,4 +187,24 @@
         transform: translateX(-50%);
         z-index: 1000;
     }
+
+  .tooltip-hidden {
+		visibility: hidden;
+		font-family: "Nunito", sans-serif;
+		width: 200px;
+		position: absolute;
+	}
+
+	.tooltip-visible {
+		font: 18px sans-serif;
+		font-family: "Nunito", sans-serif;
+		visibility: visible;
+		background-color: #F5F5F4;
+		border-radius: 10px;
+		width: 50px;
+		color: black;
+		position: absolute;
+		padding: 10px;
+    border: 2px solid #2A2826;
+  }
 </style>

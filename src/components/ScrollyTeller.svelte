@@ -6,9 +6,15 @@
   import FaultMap from "./FaultMap.svelte";
   import { geoMercator } from "d3-geo";
   import Graph from "./Graph.svelte";
+  import earthquakePoints from './assets/earthquakes.json';
 
   let count, index, offset, progress;
   let width, height;
+
+  let hovered = -1;
+  let recorded_mouse_position = {
+		x: 0, y: 0
+	};
 
   let geoJsonToFit = {
     type: "FeatureCollection",
@@ -32,6 +38,9 @@
 
   $: projection = geoMercator().fitSize([width, height], geoJsonToFit);
 
+  function handleMouseover(e,d) {
+      console.log(d)
+    }
 </script>
 
 <Scroller
@@ -92,6 +101,34 @@
 <main>
   <h1>TESTING</h1>
   <StaticMap bind:geoJsonToFit {index}/>
+
+  <div class="visualization" role="tooltip">
+    {#each earthquakePoints as data, index}
+      console.log(index)
+      on:mouseover={
+      (event) => { handleMouseover(data,index);
+        hovered = index; 
+        recorded_mouse_position = {
+            x: event.pageX,
+            y: event.pageY
+          }
+      }}
+      on:mouseout={(event) => { hovered = -1; }}
+      on:focus={"blue"} 
+      on:blur={"blue"} 
+    {/each}
+
+    <div
+      class={hovered === -1 ? "tooltip-hidden": "tooltip-visible"}	
+      style="left: {recorded_mouse_position.x + 40}px; top: {recorded_mouse_position.y + 40}px"
+    >
+      {#if hovered !== -1}
+      Magnitude: {earthquakePoints[hovered].Mag}
+      {/if}
+    </div>
+</div>
+
+
 </main>
 
 <style>
@@ -126,5 +163,25 @@
     color: black;
     padding: 1em;
     margin: 0 0 2em 0;
+  }
+
+  .tooltip-hidden {
+		visibility: hidden;
+		font-family: "Nunito", sans-serif;
+		width: 200px;
+		position: absolute;
+	}
+
+	.tooltip-visible {
+		font: 18px sans-serif;
+		font-family: "Nunito", sans-serif;
+		visibility: visible;
+		background-color: #F5F5F4;
+		border-radius: 10px;
+		width: 50px;
+		color: black;
+		position: absolute;
+		padding: 10px;
+    border: 2px solid #2A2826;
   }
 </style>
