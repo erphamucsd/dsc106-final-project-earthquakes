@@ -2,6 +2,7 @@
   import Scroller from "@sveltejs/svelte-scroller";
   import MapPlain from "./MapPlain.svelte";
   import EarthquakeMap from "./EarthquakeMap.svelte";
+  import StaticMap from "./StaticMap.svelte";
   import FaultMap from "./FaultMap.svelte";
   import { geoMercator } from "d3-geo";
   import Graph from "./Graph.svelte";
@@ -87,6 +88,11 @@
     <section>Index 18</section>
   </div>
 </Scroller>
+
+<main>
+  <h1>TESTING</h1>
+  <StaticMap bind:geoJsonToFit {index}/>
+</main>
 
 <style>
   .background {
