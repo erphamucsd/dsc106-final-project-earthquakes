@@ -58,7 +58,7 @@
         type: 'circle',
         source: 'earthquakePoints',
         paint: {
-          'circle-radius': 5,
+          'circle-radius': 4,
           'circle-color': '#cd5c5c',
           'circle-opacity': 0.4
         }
