@@ -1,6 +1,9 @@
 <script>
   import mapboxgl from "mapbox-gl";
   import { onMount } from "svelte";
+  import * as d3 from 'd3'; // Import D3 library
+  import earthquakePoints from './assets/earthquakes.json';
+  
   export let index;
   export let geoJsonToFit;
 
@@ -9,7 +12,6 @@
 
   let container;
   let map;
-
   let previousIndex = 0;
 
   onMount(() => {
@@ -22,13 +24,73 @@
     });
 
     map.on("load", () => {
+      // Convert JSON data from earthquakePoints to GeoJSON-like objects
+      const features = earthquakePoints.map(earthquake => ({
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [parseFloat(earthquake.Longitude), parseFloat(earthquake.Latitude)]
+        },
+        properties: {
+          magnitude: parseFloat(earthquake.Mag),
+          date: new Date(earthquake.Time) // Convert date string to Date object
+        }
+      }));
+
+      // Add GeoJSON source
+      map.addSource('earthquakePoints', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: features
+        }
+      });
+
+      // Add layer for plotting points
+      map.addLayer({
+        id: 'earthquakePoints',
+        type: 'circle',
+        source: 'earthquakePoints',
+        paint: {
+          'circle-radius': [
+            'interpolate',
+            ['exponential', 4],
+            ['get', 'magnitude'],
+            0.5,1.5,9,30
+            ],
+          'circle-color': '#cd5c5c',
+          'circle-opacity': 0.4
+        }
+      });
+
+      // Hide label layers
       hideLabelLayers();
+      // Update bounds
       updateBounds();
-      map.on("zoom", updateBounds);
-      map.on("drag", updateBounds);
-      map.on("move", updateBounds);
+    });
+
+  map.on("load", () => {
+    hideLabelLayers();
+    updateBounds();
+    map.on("zoom", updateBounds);
+    map.on("drag", updateBounds);
+    map.on("move", updateBounds);
     });
   });
+
+  function hideLabelLayers() {
+    const labelLayerIds = map
+      .getStyle()
+      .layers.filter(
+        (layer) =>
+          layer.type === "symbol" && /label|text|place/.test(layer.id)
+      )
+      .map((layer) => layer.id);
+
+    for (const layerId of labelLayerIds) {
+      map.setLayoutProperty(layerId, "visibility", "none");
+    }
+  }
 
   function updateBounds() {
     const bounds = map.getBounds();
@@ -44,8 +106,7 @@
 
   let isVisible = false;
 
-  $: isVisible = index === 8;
-  
+  $: isVisible = index === 8
 </script>
 
 <svelte:head>
@@ -55,7 +116,7 @@
   />
 </svelte:head>
 
-<div class="map" class:visible={isVisible} bind:this={container} />
+<div class="map" class:visible={isVisible} bind:this={container}></div>
 
 <style>
   .map {
@@ -72,4 +133,6 @@
     opacity: 1;
     visibility: visible;
   }
+
+
 </style>

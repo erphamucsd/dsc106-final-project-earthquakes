@@ -85,15 +85,20 @@
   // Create tweened variables for visualization1 description
   const tweenedvisualization1descriptionOpacity = tweened(0);
   const tweenedvisualization1descriptionY = tweened(0);
+  const tweenedvisualization1descriptionX = tweened(0);
+
   tweenedvisualization1descriptionY.set(height / 2)
+  tweenedvisualization1descriptionX.set(width / 2)
   tweenedvisualization1descriptionOpacity.set(0); //initialize opacity to be 0
 
   $: { // Define animations based on index
    if (index === 8) {
       tweenedvisualization1descriptionY.set(height / 2);
+      tweenedvisualization1descriptionX.set(height / 2);
       tweenedvisualization1descriptionOpacity.set(1);
     } else if (index === 9 || index === 10) {
       tweenedvisualization1descriptionY.set((6 / 7) * height);
+      tweenedvisualization1descriptionX.set((2 / 3) * width);
       tweenedvisualization1descriptionOpacity.set(1);
     } else {
       tweenedvisualization1descriptionOpacity.set(0);
@@ -177,7 +182,7 @@ $: { // Define animations based on index
     >{backgroundStory3}</text>
     <!-- visualization1 -->
     <text
-      x={width * 2/3}
+      x={$tweenedvisualization1descriptionX}
       y={$tweenedvisualization1descriptionY}
       opacity={$tweenedvisualization1descriptionOpacity}
       in:fly={{ y: -300, duration: 1000 }}

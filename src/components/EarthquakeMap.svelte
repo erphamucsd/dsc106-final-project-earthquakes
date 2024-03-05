@@ -6,19 +6,14 @@
   
   export let index;
   export let geoJsonToFit;
+  export let selectedDate;
 
   mapboxgl.accessToken =
     "pk.eyJ1Ijoia2F0ZWx5bndvbmciLCJhIjoiY2xzZ3d1b3JlMHhkaTJ2cjJ5bHc5ZHc2cyJ9.1gcsw89CYByE5i-0jUmK8g";
 
-  const sliderTimeScale = d3
-    .scaleTime()
-    .domain([0, 1440])
-    .range([new Date("1900-01-01 00:00"), new Date("2023-01-01 00:00")]);
-
   let container;
   let map;
   let previousIndex = 0;
-  let filterDate = sliderTimeScale(720); // Initial date for filtering earthquakes
 
   onMount(() => {
     map = new mapboxgl.Map({
@@ -58,7 +53,12 @@
         type: 'circle',
         source: 'earthquakePoints',
         paint: {
-          'circle-radius': 4,
+          'circle-radius': [
+            'interpolate',
+            ['exponential', 4],
+            ['get', 'magnitude'],
+            0.5,1.5,9,30
+            ],
           'circle-color': '#cd5c5c',
           'circle-opacity': 0.4
         }
@@ -127,11 +127,6 @@
 
 <div class="map" class:visible={isVisible} bind:this={container}></div>
 
-{#if index >= 9 && index <= 10}
-    <input type="range" min="0" max="1440" step="1" bind:value={filterDate} />
-    <p class="slider-text">Adjust the slider to select a date</p>
-{/if}
-
 <style>
   .map {
     width: 100%;
@@ -148,19 +143,5 @@
     visibility: visible;
   }
 
-    .slider-text {
-        position: absolute;
-        bottom: 40px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1000;
-    }
 
-    input[type="range"] {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1000;
-    }
 </style>
