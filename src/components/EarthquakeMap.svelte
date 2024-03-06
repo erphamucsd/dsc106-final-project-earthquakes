@@ -38,37 +38,56 @@
         }
       }));
 
-      // Add GeoJSON source
-      map.addSource('earthquakePoints', {
-        type: 'geojson',
-        data: {
-          type: 'FeatureCollection',
-          features: features
-        }
-      });
+// Katelyn's testing attempts to filter data
+    // console.log(features)
+      
+    // let parsedFeatures;
+    // function updateFeatures(features, selectedDate) {
+    //   return features.filter(point => {
+    //     // const pointDate = new Date(point.Time);
+    //     return (
+    //       point.properties.date.getDate() === selectedDate.getDate() &&
+    //       point.properties.date.getMonth() === selectedDate.getMonth() &&
+    //       point.properties.date.getFullYear() === selectedDate.getFullYear()
+    //     );
+    //   });
+    // }
 
-      // Add layer for plotting points
-      map.addLayer({
-        id: 'earthquakePoints',
-        type: 'circle',
-        source: 'earthquakePoints',
-        paint: {
-          'circle-radius': [
-            'interpolate',
-            ['exponential', 4],
-            ['get', 'magnitude'],
-            0.5,1.5,9,30
-            ],
-          'circle-color': '#cd5c5c',
-          'circle-opacity': 0.4
-        }
-      });
+    // console.log(updateFeatures(features, new Date("2000-12-30")))
+    // // parsedFeatures = updateFeatures(features,selectedDate)
 
-      // Hide label layers
-      hideLabelLayers();
-      // Update bounds
-      updateBounds();
+
+    // Add GeoJSON source
+    map.addSource('earthquakePoints', {
+      type: 'geojson',
+      data: {
+        type: 'FeatureCollection',
+        features: features
+      }
     });
+
+    // Add layer for plotting points
+    map.addLayer({
+      id: 'earthquakePoints',
+      type: 'circle',
+      source: 'earthquakePoints',
+      paint: {
+        'circle-radius': [
+          'interpolate',
+          ['exponential', 4],
+          ['get', 'magnitude'],
+          0.5,1.5,9,30
+          ],
+        'circle-color': '#cd5c5c',
+        'circle-opacity': 0.4
+      }
+    });
+
+    // Hide label layers
+    hideLabelLayers();
+    // Update bounds
+    updateBounds();
+  });
 
   map.on("load", () => {
     hideLabelLayers();
@@ -84,14 +103,14 @@
       .getStyle()
       .layers.filter(
         (layer) =>
-          layer.type === "symbol" && /label|text|place/.test(layer.id)
+        layer.type === "symbol" && /label|text|place/.test(layer.id)
       )
       .map((layer) => layer.id);
 
-    for (const layerId of labelLayerIds) {
-      map.setLayoutProperty(layerId, "visibility", "none");
+      for (const layerId of labelLayerIds) {
+        map.setLayoutProperty(layerId, "visibility", "none");
+      }
     }
-  }
 
   function updateBounds() {
     const bounds = map.getBounds();
@@ -107,8 +126,9 @@
 
   let isVisible = false;
 
+  // adjusting visibility of map for only index 9 and 19
   $: isVisible = index === 9 || index === 10;
-  $: {
+  $: { // sliding animation between index 9 and 10
     if (index === 10 && previousIndex === 9) {
       map.panTo([-100, 0], { duration: 2000 }); // Sliding animation to [-100, 0]
     } else if (index === 9 && previousIndex === 10) {

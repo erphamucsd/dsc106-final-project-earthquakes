@@ -51,9 +51,9 @@
   }
   const sliderDayScale = d3
     .scaleTime()
-    .domain([new Date("1900-01-01"), new Date("2019-12-31")])
+    .domain([new Date("1900-01-01"), new Date("2023-01-01")])
     // Adjust range based on the number of days between your chosen dates
-    .range([0, calculateNumberOfDays(new Date("1900-01-01"), new Date("2019-12-31"))]);
+    .range([0, calculateNumberOfDays(new Date("1900-01-01"), new Date("2023-01-01"))]);
     
   // Initial date for filtering earthquakes
   let filterDate = sliderDayScale(new Date("1900-01-01")); // Adjust this as needed for your initial date
@@ -66,16 +66,16 @@
   }
 </script>
 
-
 <main>
+  <!-- Slider html and text -->
   {#if index === 9 || index === 10}
-  <div class="text-wrapper">
-    <p>Scroll to adjust date:</p>
-  </div>
-    <!-- Interactive time slider -->
-    <input type="range" min="1" max="{calculateNumberOfDays(new Date('1900-01-01'), new Date('2019-12-31'))}" step="1" bind:value={filterDate} oninput={() => updateFilterDate(event.target.value)}>
-    <p class="slider-text">{sliderDayScale.invert(filterDate).toLocaleDateString()}</p>
-{/if}
+    <div class="text-wrapper">
+      <p>Scroll to adjust date:</p>
+    </div>
+      <!-- Interactive time slider -->
+      <input type="range" min="1" max="{calculateNumberOfDays(new Date('1900-01-01'), new Date("2023-01-01"))}" step="1" bind:value={filterDate} oninput={() => updateFilterDate(event.target.value)}>
+      <p class="slider-text">{sliderDayScale.invert(filterDate).toLocaleDateString()}</p>
+  {/if}
 
 <Scroller
   top={0.0}
@@ -133,7 +133,7 @@
   </div>
 
 </Scroller>
-<h1>TESTING</h1>
+  <h1>TESTING</h1>
   <StaticMap bind:geoJsonToFit/>
 </main>
 
@@ -186,7 +186,7 @@
     transform: translateX(-50%);
     z-index: 1000;
   }
-
+  
   input[type="range"] {
     position: fixed;
     bottom: 20px ;
@@ -194,4 +194,5 @@
     transform: translateX(-50%);
     z-index: 1000;
   }
+
 </style>
