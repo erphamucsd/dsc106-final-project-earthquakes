@@ -13,12 +13,15 @@
   let container;
   let map;
 
+  let slider_time = 1900;
+	let slider_label = "";
+
   onMount(() => {
     map = new mapboxgl.Map({
       container,
       style: "mapbox://styles/mapbox/light-v10",
       center: [180, 0],
-      zoom: 0.9,
+      zoom: 0.8,
       attributionControl: true,
     });
 
@@ -32,7 +35,8 @@
         },
         properties: {
           magnitude: parseFloat(earthquake.Mag),
-          date: new Date(earthquake.Time) // Convert date string to Date object
+          date: new Date(earthquake.Time), // Convert date string to Date object
+          year: Math.floor(new Date(earthquake.Time).getUTCFullYear() / 10) * 10
         }
       }));
 
@@ -57,8 +61,14 @@
             ['get', 'magnitude'],
             0,0.5,9,20
             ],
-          'circle-color': '#cd5c5c',
-          'circle-opacity': 0.4
+          'circle-color': [
+            'interpolate',
+            ['exponential', 4],
+            ['get', 'magnitude'],
+            0.5,'#fec311',
+            9,'#990000'
+            ],
+          'circle-opacity': 0.6
         }
       });
 
@@ -102,7 +112,31 @@
       bounds._sw.lat,
     ];
   }
+
+  function filterBy(year) {
+    map.setFilter('earthquakePoints', ['==', 'year', year]);
+  }
+
+  $: {
+    if (slider_time != 1900) {
+      filterBy(slider_time)
+    }
+  }
 </script>
+
+<main>
+  <div class="overlay">
+		<label>{slider_label}</label>
+		<input
+			id="slider"
+			type="range"
+			min="1900"
+			max="2020"
+      step="10"
+			bind:value={slider_time}
+		/>
+	</div>
+</main>
 
 <svelte:head>
   <link
@@ -115,10 +149,10 @@
 
 <style>
   .map {
-    width: 80%;
+    width: 70%;
     height: 80vh;
-    left: 10%;
-    right: 10%;
+    left: 15%;
+    right: 15%;
     position: relative;
     opacity: 0;
     visibility: hidden;
