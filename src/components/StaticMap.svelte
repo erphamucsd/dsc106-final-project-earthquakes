@@ -13,7 +13,7 @@
   let container;
   let map;
 
-  let slider_time = 1900;
+  let slider_time = "Slide For Decade";
 	let slider_label = "";
 
   onMount(() => {
@@ -118,7 +118,7 @@
   }
 
   $: {
-    if (slider_time != 1900) {
+    if (slider_time != "Slide For Decade") {
       filterBy(slider_time)
     }
   }
@@ -135,6 +135,7 @@
       step="10"
 			bind:value={slider_time}
 		/>
+    <p class="slider-text">{slider_time}</p>
 	</div>
 </main>
 
@@ -163,5 +164,9 @@
   .map.visible {
     opacity: 1;
     visibility: visible;
+  }
+
+  .slider-text {
+    position: relative;
   }
 </style>
