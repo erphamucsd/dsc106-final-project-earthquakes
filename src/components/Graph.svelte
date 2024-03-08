@@ -56,6 +56,21 @@
   const tweenedStory2Y = tweened(0);
   tweenedStory1Y.set(height*1.5)
   const tweenedStory3Opacity = tweened(0);
+  const tweenedStory3Y = tweened(0);
+  const tweenedStory4Opacity = tweened(0);
+  const tweenedStory4Y = tweened(0);
+  const tweenedStory5Opacity = tweened(0);
+  const tweenedStory5Y = tweened(0);
+  const tweenedStory6Opacity = tweened(0);
+  const tweenedStory6Y = tweened(0);
+  const tweenedStory7Opacity = tweened(0);
+  const tweenedStory7Y = tweened(0);
+  const tweenedStory8Opacity = tweened(0);
+  const tweenedStory8Y = tweened(0);
+  const tweenedStory9Opacity = tweened(0);
+  const tweenedStory9Y = tweened(0);
+  const tweenedStory10Opacity = tweened(0);
+  const tweenedStory10Y = tweened(0);
 
   $: { // background story animations
     if (index === 4) {
@@ -81,8 +96,58 @@
     if (index === 7) {
       tweenedStory3Opacity.set(1)
       tweenedStory2Y.set(-20)
+      tweenedStory3Y.set(height/2)
     } else {
       tweenedStory3Opacity.set(0)
+    }
+    if (index === 8) {
+      tweenedStory4Opacity.set(1)
+      tweenedStory3Y.set(-20)
+      tweenedStory4Y.set(height/2)
+    } else {
+      tweenedStory4Opacity.set(0)
+    }
+    if (index === 9) {
+      tweenedStory5Opacity.set(1)
+      tweenedStory4Y.set(-20)
+      tweenedStory5Y.set(height/2)
+    } else {
+      tweenedStory5Opacity.set(0)
+    }
+    if (index === 10) {
+      tweenedStory6Opacity.set(1)
+      tweenedStory5Y.set(-20)
+      tweenedStory6Y.set(height/2)
+    } else {
+      tweenedStory6Opacity.set(0)
+    }
+    if (index === 11) {
+      tweenedStory7Opacity.set(1)
+      tweenedStory6Y.set(-20)
+      tweenedStory7Y.set(height/2)
+    } else {
+      tweenedStory7Opacity.set(0)
+    }
+    if (index === 12) {
+      tweenedStory8Opacity.set(1)
+      tweenedStory7Y.set(-20)
+      tweenedStory8Y.set(height/2)
+    } else {
+      tweenedStory8Opacity.set(0)
+    }
+    if (index === 13) {
+      tweenedStory9Opacity.set(1)
+      tweenedStory8Y.set(-20)
+      tweenedStory9Y.set(height/2)
+    } else {
+      tweenedStory9Opacity.set(0)
+    }
+    if (index === 14) {
+      tweenedStory10Opacity.set(1)
+      tweenedStory9Y.set(-20)
+      tweenedStory10Y.set(height/2)
+    } else {
+      tweenedStory10Opacity.set(0)
     }
   }
 
@@ -176,43 +241,165 @@ $: { // Define animations based on index
     <text class="backgroundStory1"
       x="10%"
       y={$tweenedStory1Y}
-      text-anchor="left"
+      text-anchor="middle"
       opacity={$tweenedStory1Opacity}
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >
-      <tspan x="10%" dy="-4em">an extreme earthquake measuring 7.9 on the</tspan>
-      <tspan x="10%" dy="1.8em">moment magnitude scale struck the Northern </tspan>
-      <tspan x="10%" dy="1.8em">coast of California. This earthquake devastated </tspan>
-      <tspan x="10%" dy="1.8em">areas ranging from San Francisco to Eureka, </tspan>
-      <tspan x="10%" dy="1.8em">causing millions to die and devastating fires</tspan>
-      <tspan x="10%" dy="1.8em">in San Francisco.</tspan>
+      <tspan x="22%" dy="-4em">an extreme earthquake measuring 7.9 on the</tspan>
+      <tspan x="22%" dy="1.8em">moment magnitude scale struck the Northern </tspan>
+      <tspan x="22%" dy="1.8em">coast of California. This earthquake devastated </tspan>
+      <tspan x="22%" dy="1.8em">areas ranging from San Francisco to Eureka, </tspan>
+      <tspan x="22%" dy="1.8em">causing millions to die and devastating fires</tspan>
+      <tspan x="22%" dy="1.8em">in San Francisco.</tspan>
     </text>
 
 
     <text class = 'backgroundStory2'
       x="10%"
       y={$tweenedStory2Y}
-      text-anchor="left"
+      text-anchor="middle"
       opacity={$tweenedStory2Opacity}
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >      
-      <tspan x="10%" dy="-4em">In the aftermath of this earthquake, workers</tspan>
-      <tspan x="10%" dy="1.8em">found that more than 3,000 died, over 225,000</tspan>
-      <tspan x="10%" dy="1.8em">people became homeless, and over $400 million</tspan>
-      <tspan x="10%" dy="1.8em">was lost in property damages. With most of</tspan>
-      <tspan x="10%" dy="1.8em">San Francicsco and other parts of the bay</tspan>
-      <tspan x="10%" dy="1.8em">destroyed, this fateful event is remembered as</tspan>
-      <tspan x="10%" dy="1.8em">the deadliest earthquake in US history.</tspan>
-  </text>
-      <text
-      x={width / 2}
-      y={height / 2}
+      <tspan x="22%" dy="-4em">In the aftermath of this earthquake, workers</tspan>
+      <tspan x="22%" dy="1.8em">found that more than 3,000 died, over 225,000</tspan>
+      <tspan x="22%" dy="1.8em">people became homeless, and over $400 million</tspan>
+      <tspan x="22%" dy="1.8em">was lost in property damages. With most of</tspan>
+      <tspan x="22%" dy="1.8em">San Francicsco and other parts of the bay</tspan>
+      <tspan x="22%" dy="1.8em">destroyed, this fateful event is remembered as</tspan>
+      <tspan x="22%" dy="1.8em">the deadliest earthquake in US history.</tspan>
+    </text>
+    
+    <text class = 'impactStory1'
+      x="90%"
+      y={$tweenedStory3Y}
+      text-anchor="middle"
       opacity={$tweenedStory3Opacity}
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
-    >{backgroundStory3}</text>
+    >
+      <tspan x="78%" dy="-4em">Earthquakes are often labeled as one of the most devastating</tspan>
+      <tspan x="78%" dy="1.8em">natural disasters. Since earthquakes can't be predicted,</tspan>
+      <tspan x="78%" dy="1.8em">people don’t have time to prepare for them as compared to</tspan>
+      <tspan x="78%" dy="1.8em">other types of natural disasters. Earthquakes not only destroy</tspan>
+      <tspan x="78%" dy="1.8em">through their powerful shaking, but they can trigger other</tspan>
+      <tspan x="78%" dy="1.8em">catastrophic events to occur, such as tsunamis and fires.</tspan>
+    </text>
+
+    <text class = 'impactStory2'
+      x="90%"
+      y={$tweenedStory4Y}
+      text-anchor="middle"
+      opacity={$tweenedStory4Opacity}
+      in:fly={{ y: -300, duration: 1000 }}
+      out:fly={{ y: -300, duration: 1000 }}
+    >
+      <tspan x="78%" dy="-4em">Although an earthquake may last for just a few minutes,</tspan>
+      <tspan x="78%" dy="1.8em">the aftermath of an earthquake can be felt for weeks to</tspan>
+      <tspan x="78%" dy="1.8em">years. Earthquakes can displace people from their homes</tspan>
+      <tspan x="78%" dy="1.8em">and destroy livelihoods in an instant. All of these events</tspan>
+      <tspan x="78%" dy="1.8em">can impact society, the economy, and the climate. For</tspan>
+      <tspan x="78%" dy="1.8em">example, the Great East Japan Earthquake in 2011 caused</tspan>
+      <tspan x="78%" dy="1.8em">an economic loss of $360 billion alone. It's extremely</tspan>
+      <tspan x="78%" dy="1.8em">costly to repair th damages that come with earthquakes.</tspan>
+    </text>
+
+    <text class = 'faultStory1'
+      x="10%"
+      y={$tweenedStory5Y}
+      text-anchor="middle"
+      opacity={$tweenedStory5Opacity}
+      in:fly={{ y: -300, duration: 1000 }}
+      out:fly={{ y: -300, duration: 1000 }}
+    >
+      <tspan x="22%" dy="-4em">How are these disastrous earthquakes formed?</tspan>
+      <tspan x="22%" dy="1.8em">Earth’s crust consists of 7 major tectonic plates,</tspan>
+      <tspan x="22%" dy="1.8em">each varying in size and location. When these plates</tspan>
+      <tspan x="22%" dy="1.8em">move, the borders of the tectonic plates, also known</tspan>
+      <tspan x="22%" dy="1.8em">as fault lines, occasionally touch each other, and</tspan>
+      <tspan x="22%" dy="1.8em">these brief moments of interaction are what cause</tspan>
+      <tspan x="22%" dy="1.8em">earthquakes. The friction from the plates touching</tspan>
+      <tspan x="22%" dy="1.8em">creates energy, which is released as waves to Earth's</tspan>
+      <tspan x="22%" dy="1.8em">surface. The amount of pressure that’s produced from</tspan>
+      <tspan x="22%" dy="1.8em">the friction determines how strong the earthquake is.</tspan>
+    </text>
+
+    <text class = 'faultStory2'
+      x="10%"
+      y={$tweenedStory6Y}
+      text-anchor="middle"
+      opacity={$tweenedStory6Opacity}
+      in:fly={{ y: -300, duration: 1000 }}
+      out:fly={{ y: -300, duration: 1000 }}
+    >
+      <tspan x="22%" dy="-4em">Since earthquakes happen when tectonic plates touch,</tspan>
+      <tspan x="22%" dy="1.8em">almost all earthquakes occur at fault lines. This</tspan>
+      <tspan x="22%" dy="1.8em">map shows each earthquake as a circle on the map, and</tspan>
+      <tspan x="22%" dy="1.8em">we can see that these earthquakes happen on Earth’s</tspan>
+      <tspan x="22%" dy="1.8em">fault lines. A majority of earthquakes are so small</tspan>
+      <tspan x="22%" dy="1.8em">that they go by undetected, but there are some powerful</tspan>
+      <tspan x="22%" dy="1.8em">earthquakes, and these are represented by the red circles.</tspan>
+    </text>
+
+    <text class = 'ringFireStory'
+      x="90%"
+      y={$tweenedStory7Y}
+      text-anchor="middle"
+      opacity={$tweenedStory7Opacity}
+      in:fly={{ y: -300, duration: 1000 }}
+      out:fly={{ y: -300, duration: 1000 }}
+    >
+      <tspan x="78%" dy="-4em">Most of the earthquakes occur in a horseshoe-shaped</tspan>
+      <tspan x="78%" dy="1.8em">path along the Pacific Ocean, and this region is referred</tspan>
+      <tspan x="78%" dy="1.8em">to as the Ring of Fire. Due to increased tectonic activity</tspan>
+      <tspan x="78%" dy="1.8em">in this area, the Ring of Fire is where 90% of earthquakes</tspan>
+      <tspan x="78%" dy="1.8em">and 75% of active volcanoes are located. Many of the</tspan>
+      <tspan x="78%" dy="1.8em">major earthquakes happen in this region, such as the</tspan>
+      <tspan x="78%" dy="1.8em">1960 Valdivia earthquake.</tspan>
+    </text>
+
+    <text class = 'earthquakeExample1'
+      x="10%"
+      y={$tweenedStory8Y}
+      text-anchor="middle"
+      opacity={$tweenedStory8Opacity}
+      in:fly={{ y: -300, duration: 1000 }}
+      out:fly={{ y: -300, duration: 1000 }}
+    >
+      <tspan x="22%" dy="-4em">The 1960 Valdivia earthquake occurred in southern Chile</tspan>
+      <tspan x="22%" dy="1.8em">on May 22, 1960, and it was the most powerful earthquake</tspan>
+      <tspan x="22%" dy="1.8em">that was ever recorded. With an astonishing 9.5 on the moment</tspan>
+      <tspan x="22%" dy="1.8em">magnitude scale, this earthquake lasted for 10 minutes and</tspan>
+      <tspan x="22%" dy="1.8em">created a tsunami that reached Hawaii, Japan, and the Philippines.</tspan>
+      <tspan x="22%" dy="1.8em">It killed 1655 people, with 61 deaths in Hawaii, 138 deaths in Japan,</tspan>
+      <tspan x="22%" dy="1.8em">and 32 dead and missing in the Philippines. This catastrophic event</tspan>
+      <tspan x="22%" dy="1.8em">also left 3000 injured, 2000000 homeless, and $550 million in</tspan>
+      <tspan x="22%" dy="1.8em">damage in southern Chile.</tspan>
+    </text>
+
+    <text class = 'earthquakeExample2'
+      x="10%"
+      y={$tweenedStory9Y}
+      text-anchor="middle"
+      opacity={$tweenedStory9Opacity}
+      in:fly={{ y: -300, duration: 1000 }}
+      out:fly={{ y: -300, duration: 1000 }}
+    >
+      <tspan x="22%" dy="-4em">Japan 2011</tspan>
+    </text>
+
+    <text class = 'earthquakeExample3'
+      x="10%"
+      y={$tweenedStory10Y}
+      text-anchor="middle"
+      opacity={$tweenedStory10Opacity}
+      in:fly={{ y: -300, duration: 1000 }}
+      out:fly={{ y: -300, duration: 1000 }}
+    >
+      <tspan x="22%" dy="-4em">SF earthquake</tspan>
+    </text>
     <!-- visualization1 -->
     <text
       x={$tweenedvisualization1descriptionX}
