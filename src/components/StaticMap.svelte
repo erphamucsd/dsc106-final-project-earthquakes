@@ -167,6 +167,6 @@
   }
 
   .slider-text {
-    position: relative;
+    position: fixed;
   }
 </style>

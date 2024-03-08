@@ -56,6 +56,9 @@
     // console.log(updateFeatures(features, new Date("2000-12-30")))
     // // parsedFeatures = updateFeatures(features,selectedDate)
 
+  function filterBy(year) {
+    map.setFilter('earthquakePoints', ['==', 'year', year]);
+  }
 
     // Add GeoJSON source
     map.addSource('earthquakePoints', {
@@ -78,8 +81,14 @@
           ['get', 'magnitude'],
           0.5,1.5,9,30
           ],
-        'circle-color': '#cd5c5c',
-        'circle-opacity': 0.4
+          'circle-color': [
+            'interpolate',
+            ['exponential', 4],
+            ['get', 'magnitude'],
+            0.5,'#fec311',
+            9,'#990000'
+            ],
+          'circle-opacity': 0.6
       }
     });
 
