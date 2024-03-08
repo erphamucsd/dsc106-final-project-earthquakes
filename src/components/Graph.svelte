@@ -51,7 +51,10 @@
   const tweenedStory1Opacity = tweened(0);
   const tweenedStory1Y = tweened(0);
   tweenedStory1Y.set(height*1.5)
+
   const tweenedStory2Opacity = tweened(0);
+  const tweenedStory2Y = tweened(0);
+  tweenedStory1Y.set(height*1.5)
   const tweenedStory3Opacity = tweened(0);
 
   $: { // background story animations
@@ -64,17 +67,20 @@
     if (index === 5) {
       tweenedStory1Opacity.set(1)
       tweenedStory1Y.set(height/2)
+      tweenedStory2Y.set(height*1.5)
     } else {
       tweenedStory1Opacity.set(0)
     }
     if (index === 6) {
       tweenedStory2Opacity.set(1)
       tweenedStory1Y.set(-20)
+      tweenedStory2Y.set(height/2)
     } else {
       tweenedStory2Opacity.set(0)
     }
     if (index === 7) {
       tweenedStory3Opacity.set(1)
+      tweenedStory2Y.set(-20)
     } else {
       tweenedStory3Opacity.set(0)
     }
@@ -185,12 +191,21 @@ $: { // Define animations based on index
 
 
     <text class = 'backgroundStory2'
-      x={width / 2}
-      y={height / 2}
+      x="10%"
+      y={$tweenedStory2Y}
+      text-anchor="left"
       opacity={$tweenedStory2Opacity}
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
-    >{backgroundStory2}</text>
+    >      
+      <tspan x="10%" dy="-4em">In the aftermath of this earthquake, workers</tspan>
+      <tspan x="10%" dy="1.8em">found that more than 3,000 died, over 225,000</tspan>
+      <tspan x="10%" dy="1.8em">people became homeless, and over $400 million</tspan>
+      <tspan x="10%" dy="1.8em">was lost in property damages. With most of</tspan>
+      <tspan x="10%" dy="1.8em">San Francicsco and other parts of the bay</tspan>
+      <tspan x="10%" dy="1.8em">destroyed, this fateful event is remembered as</tspan>
+      <tspan x="10%" dy="1.8em">the deadliest earthquake in US history.</tspan>
+  </text>
       <text
       x={width / 2}
       y={height / 2}
