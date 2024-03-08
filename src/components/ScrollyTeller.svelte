@@ -68,7 +68,7 @@
 
 <main>
   <!-- Slider html and text -->
-  {#if index === 9 || index === 10}
+  {#if index === 10 || index === 11}
     <div class="text-wrapper">
       <p>Scroll to adjust date:</p>
     </div>

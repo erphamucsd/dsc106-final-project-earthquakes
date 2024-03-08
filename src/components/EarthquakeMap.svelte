@@ -135,12 +135,12 @@
 
   let isVisible = false;
 
-  // adjusting visibility of map for only index 9 and 19
-  $: isVisible = index === 9 || index === 10;
+  // adjusting visibility of map for only index 10 and 11
+  $: isVisible = index === 10 || index === 11;
   $: { // sliding animation between index 9 and 10
-    if (index === 10 && previousIndex === 9) {
+    if (index === 11 && previousIndex === 10) {
       map.panTo([-100, 0], { duration: 2000 }); // Sliding animation to [-100, 0]
-    } else if (index === 9 && previousIndex === 10) {
+    } else if (index === 10 && previousIndex === 11) {
       map.panTo([0, 0], { duration: 2000 }); // Sliding animation to [0, 0]
     }
     previousIndex = index;

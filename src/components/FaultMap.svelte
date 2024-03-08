@@ -16,7 +16,7 @@
     map = new mapboxgl.Map({
       container,
       style: "mapbox://styles/mapbox/light-v10",
-      center: [-100, 0],
+      center: [0, 0],
       zoom: 1,
       attributionControl: true,
     });
@@ -75,7 +75,7 @@
 
   let isVisible = false;
 
-  $: isVisible = index === 11 || index === 12;
+  $: isVisible = index === 8 || index === 9;
 
   
 </script>
