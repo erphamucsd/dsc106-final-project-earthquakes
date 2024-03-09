@@ -82,6 +82,7 @@
       tweenedStory2Opacity.set(1)
       tweenedStory1Y.set(-20)
       tweenedStory2Y.set(height/2)
+      tweenedStory3Y.set(height*1.5)
     } else {
       tweenedStory2Opacity.set(0)
     }
@@ -89,33 +90,31 @@
       tweenedStory3Opacity.set(1)
       tweenedStory2Y.set(-20)
       tweenedStory3Y.set(height/2)
+      tweenedStory4Y.set(height/2)
     } else {
       tweenedStory3Opacity.set(0)
     }
     if (index === 8) {
       tweenedStory4Opacity.set(1)
       tweenedStory3Y.set(-20)
-      tweenedStory4Y.set(height/2)
+      tweenedStory5Y.set(height/2)
     } else {
       tweenedStory4Opacity.set(0)
     }
     if (index === 9) {
       tweenedStory5Opacity.set(1)
-      tweenedStory4Y.set(-20)
-      tweenedStory5Y.set(height/2)
+      tweenedStory6Y.set(height/2)
     } else {
       tweenedStory5Opacity.set(0)
     }
     if (index === 10) {
       tweenedStory6Opacity.set(1)
-      tweenedStory5Y.set(-20)
-      tweenedStory6Y.set(height/2)
+      tweenedStory8Y.set(-20)
     } else {
       tweenedStory6Opacity.set(0)
     }
     if (index === 11) {
       tweenedStory7Opacity.set(1)
-      tweenedStory6Y.set(-20)
       tweenedStory7Y.set(height/2)
     } else {
       tweenedStory7Opacity.set(0)
@@ -225,12 +224,12 @@
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >
-      <tspan x="78%" dy="-4em">Earthquakes are often labeled as one of the most devastating</tspan>
-      <tspan x="78%" dy="1.8em">natural disasters. Since earthquakes can't be predicted,</tspan>
-      <tspan x="78%" dy="1.8em">people don’t have time to prepare for them as compared to</tspan>
-      <tspan x="78%" dy="1.8em">other types of natural disasters. Earthquakes not only destroy</tspan>
-      <tspan x="78%" dy="1.8em">through their powerful shaking, but they can trigger other</tspan>
-      <tspan x="78%" dy="1.8em">catastrophic events to occur, such as tsunamis and fires.</tspan>
+      <tspan x="78%" dy="-4em">Earthquakes are often labeled as one of the most</tspan>
+      <tspan x="78%" dy="1.8em">devastating natural disasters. Not only are they </tspan>
+      <tspan x="78%" dy="1.8em">difficult to predict and prepare for compared to</tspan>
+      <tspan x="78%" dy="1.8em">other types of natural disasters, earthquakes can</tspan>
+      <tspan x="78%" dy="1.8em">also trigger other catestrofic events like tsunamis</tspan>
+      <tspan x="78%" dy="1.8em">and fires.</tspan>
     </text>
 
     <text class = 'impactStory2'
@@ -241,14 +240,14 @@
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >
-      <tspan x="78%" dy="-4em">Although an earthquake may last for just a few minutes,</tspan>
-      <tspan x="78%" dy="1.8em">the aftermath of an earthquake can be felt for weeks to</tspan>
-      <tspan x="78%" dy="1.8em">years. Earthquakes can displace people from their homes</tspan>
-      <tspan x="78%" dy="1.8em">and destroy livelihoods in an instant. All of these events</tspan>
-      <tspan x="78%" dy="1.8em">can impact society, the economy, and the climate. For</tspan>
-      <tspan x="78%" dy="1.8em">example, the Great East Japan Earthquake in 2011 caused</tspan>
-      <tspan x="78%" dy="1.8em">an economic loss of $360 billion alone. It's extremely</tspan>
-      <tspan x="78%" dy="1.8em">costly to repair th damages that come with earthquakes.</tspan>
+      <tspan x="78%" dy="-4em">Although the earthquake itself may last for just a few</tspan>
+      <tspan x="78%" dy="1.8em">minutes, the aftermath of an earthquake can be felt</tspan>
+      <tspan x="78%" dy="1.8em">for weeks to years. Earthquakes can displace people from</tspan>
+      <tspan x="78%" dy="1.8em">their homes and destroy livelihoods in an instant, ultimately</tspan>
+      <tspan x="78%" dy="1.8em">impacting society, the economy, and climate. For example,</tspan>
+      <tspan x="78%" dy="1.8em">he Great East Japan Earthquake in 2011 caused an economic</tspan>
+      <tspan x="78%" dy="1.8em">loss of $360 billion alone. As such, repairing damages</tspan>
+      <tspan x="78%" dy="1.8em">caused by earthquakes can be extremely costly.</tspan>
     </text>
 
     <text class = 'faultStory1'
