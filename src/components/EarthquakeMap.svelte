@@ -1,22 +1,19 @@
 <script>
   import mapboxgl from "mapbox-gl";
   import { onMount } from "svelte";
-  import * as d3 from 'd3'; // Import D3 library
   import earthquakePoints from './assets/earthquakes.json';
   
   export let index;
-  export let geoJsonToFit;
-  export let selectedDate;
 
   mapboxgl.accessToken =
     "pk.eyJ1Ijoia2F0ZWx5bndvbmciLCJhIjoiY2xzZ3d1b3JlMHhkaTJ2cjJ5bHc5ZHc2cyJ9.1gcsw89CYByE5i-0jUmK8g";
 
   let container;
-  let map;
+  let QuakeMap;
   let previousIndex = 0;
 
   onMount(() => {
-    map = new mapboxgl.Map({
+    QuakeMap = new mapboxgl.Map({
       container,
       style: "mapbox://styles/mapbox/light-v10",
       center: [0, 0],
@@ -24,7 +21,7 @@
       attributionControl: true,
     });
 
-    map.on("load", () => {
+    QuakeMap.on("load", () => {
       // Convert JSON data from earthquakePoints to GeoJSON-like objects
       const features = earthquakePoints.map(earthquake => ({
         type: 'Feature',
@@ -38,30 +35,8 @@
         }
       }));
 
-// Katelyn's testing attempts to filter data
-    // console.log(features)
-      
-    // let parsedFeatures;
-    // function updateFeatures(features, selectedDate) {
-    //   return features.filter(point => {
-    //     // const pointDate = new Date(point.Time);
-    //     return (
-    //       point.properties.date.getDate() === selectedDate.getDate() &&
-    //       point.properties.date.getMonth() === selectedDate.getMonth() &&
-    //       point.properties.date.getFullYear() === selectedDate.getFullYear()
-    //     );
-    //   });
-    // }
-
-    // console.log(updateFeatures(features, new Date("2000-12-30")))
-    // // parsedFeatures = updateFeatures(features,selectedDate)
-
-  function filterBy(year) {
-    map.setFilter('earthquakePoints', ['==', 'year', year]);
-  }
-
     // Add GeoJSON source
-    map.addSource('earthquakePoints', {
+    QuakeMap.addSource('earthquakePoints', {
       type: 'geojson',
       data: {
         type: 'FeatureCollection',
@@ -70,7 +45,7 @@
     });
 
     // Add layer for plotting points
-    map.addLayer({
+    QuakeMap.addLayer({
       id: 'earthquakePoints',
       type: 'circle',
       source: 'earthquakePoints',
@@ -94,21 +69,15 @@
 
     // Hide label layers
     hideLabelLayers();
-    // Update bounds
-    updateBounds();
   });
 
-  map.on("load", () => {
+  QuakeMap.on("load", () => {
     hideLabelLayers();
-    updateBounds();
-    map.on("zoom", updateBounds);
-    map.on("drag", updateBounds);
-    map.on("move", updateBounds);
     });
   });
 
   function hideLabelLayers() {
-    const labelLayerIds = map
+    const labelLayerIds = QuakeMap
       .getStyle()
       .layers.filter(
         (layer) =>
@@ -117,31 +86,27 @@
       .map((layer) => layer.id);
 
       for (const layerId of labelLayerIds) {
-        map.setLayoutProperty(layerId, "visibility", "none");
+        QuakeMap.setLayoutProperty(layerId, "visibility", "none");
       }
     }
 
-  function updateBounds() {
-    const bounds = map.getBounds();
-    geoJsonToFit.features[0].geometry.coordinates = [
-      bounds._ne.lng,
-      bounds._ne.lat,
-    ];
-    geoJsonToFit.features[1].geometry.coordinates = [
-      bounds._sw.lng,
-      bounds._sw.lat,
-    ];
-  }
-
   let isVisible = false;
 
-  // adjusting visibility of map for only index 10 and 11
-  $: isVisible = index === 10 || index === 11;
-  $: { // sliding animation between index 9 and 10
+  // adjusting visibility of map after index 10
+  $: isVisible = index >= 10;
+  $: { // sliding animation between index 10 and 11
+    // Ring of Fire flyTo
     if (index === 11 && previousIndex === 10) {
-      map.panTo([-100, 0], { duration: 2000 }); // Sliding animation to [-100, 0]
+      QuakeMap.flyTo({center: [180, 0], zoom: 1.5, duration: 2000})
     } else if (index === 10 && previousIndex === 11) {
-      map.panTo([0, 0], { duration: 2000 }); // Sliding animation to [0, 0]
+      QuakeMap.flyTo({center: [0, 0], zoom: 1, duration: 2000})
+    } 
+    
+    // Valdivia flyTo
+    else if (index === 12 && previousIndex === 11) {
+      QuakeMap.flyTo({center: [-75, -40], zoom: 3, duration: 2000})
+    } else if (index === 11 && previousIndex === 12) {
+      QuakeMap.flyTo({center: [180, 0], zoom: 1.5, duration: 2000})
     }
     previousIndex = index;
   }
