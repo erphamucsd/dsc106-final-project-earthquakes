@@ -11,13 +11,13 @@
 
 
   let container;
-  let map;
+  let StaticMap;
 
   let slider_time = "Slide For Decade";
 	let slider_label = "";
 
   onMount(() => {
-    map = new mapboxgl.Map({
+    StaticMap = new mapboxgl.Map({
       container,
       style: "mapbox://styles/mapbox/light-v10",
       center: [180, 0],
@@ -25,7 +25,7 @@
       attributionControl: true,
     });
 
-    map.on("load", () => {
+    StaticMap.on("load", () => {
       // Convert JSON data from earthquakePoints to GeoJSON-like objects
       const features = earthquakePoints.map(earthquake => ({
         type: 'Feature',
@@ -41,7 +41,7 @@
       }));
 
       // Add GeoJSON source
-      map.addSource('earthquakePoints', {
+      StaticMap.addSource('earthquakePoints', {
         type: 'geojson',
         data: {
           type: 'FeatureCollection',
@@ -50,7 +50,7 @@
       });
 
       // Add layer for plotting points
-      map.addLayer({
+      StaticMap.addLayer({
         id: 'earthquakePoints',
         type: 'circle',
         source: 'earthquakePoints',
@@ -78,12 +78,12 @@
       updateBounds();
     });
 
-  map.on("load", () => {
+  StaticMap.on("load", () => {
     hideLabelLayers();
     updateBounds();
-    map.on("zoom", updateBounds);
-    map.on("drag", updateBounds);
-    map.on("move", updateBounds);
+    StaticMap.on("zoom", updateBounds);
+    StaticMap.on("drag", updateBounds);
+    StaticMap.on("move", updateBounds);
     });
   });
 
@@ -97,12 +97,12 @@
       .map((layer) => layer.id);
 
     for (const layerId of labelLayerIds) {
-      map.setLayoutProperty(layerId, "visibility", "none");
+      StaticMap.setLayoutProperty(layerId, "visibility", "none");
     }
   }
 
   function updateBounds() {
-    const bounds = map.getBounds();
+    const bounds = StaticMap.getBounds();
     geoJsonToFit.features[0].geometry.coordinates = [
       bounds._ne.lng,
       bounds._ne.lat,
@@ -114,7 +114,7 @@
   }
 
   function filterBy(year) {
-    map.setFilter('earthquakePoints', ['==', 'year', year]);
+    StaticMap.setFilter('earthquakePoints', ['==', 'year', year]);
   }
 
   $: {
