@@ -3,12 +3,8 @@
   import { tweened } from "svelte/motion";
   import { cubicOut } from "svelte/easing";
   import earthquakeClipart from './assets/earthquake_image.jpg';
-  import earthquakePoints from './assets/earthquakes.json';
   
-
-
   export let index, width, height;
-
 
   // Define transition options
   const tweenOptions = {
@@ -41,10 +37,6 @@
       tweenedTitleImageOpacity.set(0);
     }
   }
-
-  // Define background story
-  const backgroundStory2 = 'earthquake story cont.'
-  const backgroundStory3 = 'relating earthquake story to main idea'
 
   // Create tweened variables for background story
   const tweenedbackgroundIntroOpacity = tweened(0);
@@ -151,53 +143,6 @@
     }
   }
 
-  // Visualization 1
-  const visualization1description = 'Visual that shows where earthquakes have been happening throughout time';
-
-  // Visualization 1 markings
-
-  // Create tweened variables for visualization1 description
-  const tweenedvisualization1descriptionOpacity = tweened(0);
-  const tweenedvisualization1descriptionY = tweened(0);
-  const tweenedvisualization1descriptionX = tweened(0);
-
-  tweenedvisualization1descriptionY.set(height / 2)
-  tweenedvisualization1descriptionX.set(width / 2)
-  tweenedvisualization1descriptionOpacity.set(0); //initialize opacity to be 0
-
-  $: { // Define animations based on index
-   if (index === 8) {
-      tweenedvisualization1descriptionY.set(height / 2);
-      tweenedvisualization1descriptionX.set(height / 2);
-      tweenedvisualization1descriptionOpacity.set(1);
-    } else if (index === 9 || index === 10) {
-      tweenedvisualization1descriptionY.set((6 / 7) * height);
-      tweenedvisualization1descriptionX.set((2 / 3) * width);
-      tweenedvisualization1descriptionOpacity.set(1);
-    } else {
-      tweenedvisualization1descriptionOpacity.set(0);
-    }
-  }
-
-  // Visualization 2
-   const visualization2description = 'These earthquakes correspond to the same location as Earth fault lines';
-
-  // Visualization 2 markings
-
-  // Create tweened variables for visualization1 description
-  const tweenedvisualization2descriptionOpacity = tweened(0);
-  tweenedvisualization2descriptionOpacity.set(0); //initialize opacity to be 0
-
-$: { // Define animations based on index
- if (index === 11) {
-    tweenedvisualization2descriptionOpacity.set(1);
-  } else if (index === 11 || index === 12) {
-    tweenedvisualization2descriptionOpacity.set(1);
-  } else {
-    tweenedvisualization2descriptionOpacity.set(0);
-  }
-}
-
 </script>
 
 <svg class="graph" width="100%" height="100%">
@@ -250,7 +195,7 @@ $: { // Define animations based on index
       <tspan x="22%" dy="1.8em">moment magnitude scale struck the Northern </tspan>
       <tspan x="22%" dy="1.8em">coast of California. This earthquake devastated </tspan>
       <tspan x="22%" dy="1.8em">areas ranging from San Francisco to Eureka, </tspan>
-      <tspan x="22%" dy="1.8em">causing millions to die and devastating fires</tspan>
+      <tspan x="22%" dy="1.8em">causing thousands to die and devastating fires</tspan>
       <tspan x="22%" dy="1.8em">in San Francisco.</tspan>
     </text>
 
@@ -353,30 +298,42 @@ $: { // Define animations based on index
     >
       <tspan x="78%" dy="-4em">Most of the earthquakes occur in a horseshoe-shaped</tspan>
       <tspan x="78%" dy="1.8em">path along the Pacific Ocean, and this region is referred</tspan>
-      <tspan x="78%" dy="1.8em">to as the Ring of Fire. Due to increased tectonic activity</tspan>
+      <tspan x="78%" dy="1.8em">to as the Ring of Fire. Due to high tectonic activity</tspan>
       <tspan x="78%" dy="1.8em">in this area, the Ring of Fire is where 90% of earthquakes</tspan>
-      <tspan x="78%" dy="1.8em">and 75% of active volcanoes are located. Many of the</tspan>
-      <tspan x="78%" dy="1.8em">major earthquakes happen in this region, such as the</tspan>
-      <tspan x="78%" dy="1.8em">1960 Valdivia earthquake.</tspan>
+      <tspan x="78%" dy="1.8em">and 75% of active volcanoes are located. Many major</tspan>
+      <tspan x="78%" dy="1.8em">earthquakes that have shook our world to its core have</tspan>
+      <tspan x="78%" dy="1.8em">happened along this seismically active region.</tspan>
     </text>
+
+    <rect 
+    width="550" 
+    height="340" 
+    x="0%" 
+    y={$tweenedStory8Y - 110} 
+    rx="20" 
+    ry="20" 
+    fill="white" 
+    opacity={$tweenedStory8Opacity / 2}
+    />
 
     <text class = 'earthquakeExample1'
       x="10%"
       y={$tweenedStory8Y}
       text-anchor="middle"
+      background-color='aqua'
       opacity={$tweenedStory8Opacity}
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >
-      <tspan x="22%" dy="-4em">The 1960 Valdivia earthquake occurred in southern Chile</tspan>
-      <tspan x="22%" dy="1.8em">on May 22, 1960, and it was the most powerful earthquake</tspan>
-      <tspan x="22%" dy="1.8em">that was ever recorded. With an astonishing 9.5 on the moment</tspan>
-      <tspan x="22%" dy="1.8em">magnitude scale, this earthquake lasted for 10 minutes and</tspan>
-      <tspan x="22%" dy="1.8em">created a tsunami that reached Hawaii, Japan, and the Philippines.</tspan>
-      <tspan x="22%" dy="1.8em">It killed 1655 people, with 61 deaths in Hawaii, 138 deaths in Japan,</tspan>
-      <tspan x="22%" dy="1.8em">and 32 dead and missing in the Philippines. This catastrophic event</tspan>
-      <tspan x="22%" dy="1.8em">also left 3000 injured, 2000000 homeless, and $550 million in</tspan>
-      <tspan x="22%" dy="1.8em">damage in southern Chile.</tspan>
+      <tspan x="22%" dy="-4em">In the 1960, Valdivia, Chile was rocked by the most powerful</tspan>
+      <tspan x="22%" dy="1.8em">earthquake ever recorded. With an astonishing magnitude of 9.5</tspan>
+      <tspan x="22%" dy="1.8em">this earthquake is a testament of what the Ring of Fire is</tspan>
+      <tspan x="22%" dy="1.8em">capable of creating. This earthquake was so powerful that it</tspan>
+      <tspan x="22%" dy="1.8em">created a deadly tsunami that propagated out into the Pacific.</tspan>
+      <tspan x="22%" dy="1.8em">The tsunami killed 1655 people, killing people as far away as</tspan>
+      <tspan x="22%" dy="1.8em">Hawaii, Japan, and the Philippines. At the end, this quake</tspan>
+      <tspan x="22%" dy="1.8em">injured 3000 people and caused $550 million in damages</tspan>
+      <tspan x="22%" dy="1.8em">in southern Chile alone.</tspan>
     </text>
 
     <text class = 'earthquakeExample2'
@@ -400,22 +357,6 @@ $: { // Define animations based on index
     >
       <tspan x="22%" dy="-4em">SF earthquake</tspan>
     </text>
-    <!-- visualization1 -->
-    <text
-      x={$tweenedvisualization1descriptionX}
-      y={$tweenedvisualization1descriptionY}
-      opacity={$tweenedvisualization1descriptionOpacity}
-      in:fly={{ y: -300, duration: 1000 }}
-      out:fly={{ y: -300, duration: 1000 }}
-    >{visualization1description}</text>
-    <!-- visualization2 -->
-    <text
-    x={width * 2/3}
-    y={height * 6/7}
-    opacity={$tweenedvisualization2descriptionOpacity}
-    in:fly={{ y: -300, duration: 1000 }}
-    out:fly={{ y: -300, duration: 1000 }}
-  >{visualization2description}</text>
   {/if}
 </svg>
 
@@ -425,20 +366,23 @@ $: { // Define animations based on index
     font-family: 'Playfair Display';
     font-size: 20px;
   }
+
   .title {
     font-size: 40px;
     font-weight: 500;
   }
+
   .subtitle {
-    font-size: 21px;
+    font-size: 20px;
   }
+
   .backgroundStory1 {
     white-space: pre-wrap;
   }
+
   .graph {
     width: 100%;
     height: 100%;
     position: absolute;
-    outline: red solid 7px;
   }
 </style>
