@@ -1,8 +1,11 @@
 <script>
   import { fly } from "svelte/transition";
+  import { crossfade } from 'svelte/transition';
   import { tweened } from "svelte/motion";
   import { cubicOut } from "svelte/easing";
   import earthquakeClipart from './assets/earthquake_image.jpg';
+  import sfEarthquake from './assets/sf_earthquake.png';
+  import tsunamiImage from './assets/tsunami.jpg';
   
   export let index, width, height;
 
@@ -43,7 +46,11 @@
   const tweenedStory1Opacity = tweened(0);
   const tweenedStory1Y = tweened(0);
   tweenedStory1Y.set(height*1.5)
-
+  const introImageOpacity = tweened(0)
+  introImageOpacity.set(0)
+  const tweenedRectOpacity = tweened(0)
+  tweenedRectOpacity.set(0)
+  
   const tweenedStory2Opacity = tweened(0);
   const tweenedStory2Y = tweened(0);
   tweenedStory1Y.set(height*1.5)
@@ -65,9 +72,19 @@
   const tweenedStory10Y = tweened(0);
 
   $: { // background story animations
+    if (index === 2) {
+      tweenedRectOpacity.set(0)
+
+    }
+    if (index === 3) {
+      tweenedRectOpacity.set(.5)
+
+    }
     if (index === 4) {
       tweenedbackgroundIntroOpacity.set(1)
       tweenedStory1Y.set(height*1.5)
+      introImageOpacity.set(0)
+      tweenedRectOpacity.set(1)
      } else {
       tweenedbackgroundIntroOpacity.set(0)
     }
@@ -75,6 +92,8 @@
       tweenedStory1Opacity.set(1)
       tweenedStory1Y.set(height/2)
       tweenedStory2Y.set(height*1.5)
+      introImageOpacity.set(1)
+      tweenedRectOpacity.set(.5)
     } else {
       tweenedStory1Opacity.set(0)
     }
@@ -83,6 +102,8 @@
       tweenedStory1Y.set(-20)
       tweenedStory2Y.set(height/2)
       tweenedStory3Y.set(height*1.5)
+      introImageOpacity.set(1)
+      tweenedRectOpacity.set(.5)
     } else {
       tweenedStory2Opacity.set(0)
     }
@@ -91,6 +112,8 @@
       tweenedStory2Y.set(-20)
       tweenedStory3Y.set(height/2)
       tweenedStory4Y.set(height/2)
+      introImageOpacity.set(0)
+      tweenedRectOpacity.set(0)
     } else {
       tweenedStory3Opacity.set(0)
     }
@@ -170,6 +193,20 @@
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >{"By Eric Pham, Katelyn Wong, Vanessa Hu"}</text>
+    
+    <!-- {#if index === 4 || index === 3} -->
+    <rect class="grey-rectangle"
+      width="100%"  
+      height="100%" 
+      x="0"
+      y="0"
+      fill="grey"
+      opacity={$tweenedRectOpacity}
+      in:crossfade={{ duration: 1000 }}
+      out:crossfade={{ duration: 1000 }}
+    />
+    <!-- {/if} -->
+
     <!-- background text -->
     <text class="backgroundIntro"
       x="50%"
@@ -182,6 +219,15 @@
       <tspan x="50%" dy="-0.6em">On April 18, 1906</tspan>
       <tspan x="50%" dy="1.8em">at 5:12am in the morning...</tspan>
     </text>
+
+    <image class="introImage"
+    x={width * 0.45} y="0" width={width * 0.55} height="100%"
+    xlink:href={sfEarthquake}
+      opacity={$introImageOpacity}
+      in:crossfade={{ duration: 1000 }}
+      out:crossfade={{ duration: 1000 }}
+    />
+
     <text class="backgroundStory1"
       x="10%"
       y={$tweenedStory1Y}
@@ -197,7 +243,6 @@
       <tspan x="22%" dy="1.8em">causing thousands to die and devastating fires</tspan>
       <tspan x="22%" dy="1.8em">in San Francisco.</tspan>
     </text>
-
 
     <text class = 'backgroundStory2'
       x="10%"
@@ -216,6 +261,14 @@
       <tspan x="22%" dy="1.8em">the deadliest earthquake in US history.</tspan>
     </text>
     
+    <image class="tsunamiImage"
+    x={-width*5/12} y="0" width="100%" height="100%"
+    xlink:href={tsunamiImage}
+      opacity={$tweenedStory3Opacity}
+      in:crossfade={{ duration: 1000 }}
+      out:crossfade={{ duration: 1000 }}
+    />
+   
     <text class = 'impactStory1'
       x="90%"
       y={$tweenedStory3Y}
@@ -231,7 +284,16 @@
       <tspan x="78%" dy="1.8em">also trigger other catestrofic events like tsunamis</tspan>
       <tspan x="78%" dy="1.8em">and fires.</tspan>
     </text>
-
+    <rect 
+      width="550" 
+      height="340" 
+      x="60%" 
+      y={$tweenedStory4Y - 120} 
+      rx="20" 
+      ry="20" 
+      fill="white" 
+      opacity={$tweenedStory4Opacity *6/7}
+    />
     <text class = 'impactStory2'
       x="90%"
       y={$tweenedStory4Y}
@@ -249,7 +311,16 @@
       <tspan x="78%" dy="1.8em">loss of $360 billion alone. As such, repairing damages</tspan>
       <tspan x="78%" dy="1.8em">caused by earthquakes can be extremely costly.</tspan>
     </text>
-
+    <rect 
+      width="550" 
+      height="390" 
+      x="5%" 
+      y={$tweenedStory5Y - 120} 
+      rx="20" 
+      ry="20" 
+      fill="white" 
+      opacity={$tweenedStory5Opacity *6/7}
+    />
     <text class = 'faultStory1'
       x="10%"
       y={$tweenedStory5Y}
@@ -270,6 +341,16 @@
       <tspan x="22%" dy="1.8em">the friction determines how strong the earthquake is.</tspan>
     </text>
 
+    <rect 
+      width="550" 
+      height="310" 
+      x="5%" 
+      y={$tweenedStory6Y - 120} 
+      rx="20" 
+      ry="20" 
+      fill="white" 
+      opacity={$tweenedStory6Opacity *6/7}
+    />
     <text class = 'faultStory2'
       x="10%"
       y={$tweenedStory6Y}
@@ -286,7 +367,16 @@
       <tspan x="22%" dy="1.8em">that they go by undetected, but there are some powerful</tspan>
       <tspan x="22%" dy="1.8em">earthquakes, and these are represented by the red circles.</tspan>
     </text>
-
+    <rect 
+      width="550" 
+      height="310" 
+      x="60%" 
+      y={$tweenedStory7Y - 120} 
+      rx="20" 
+      ry="20" 
+      fill="white" 
+      opacity={$tweenedStory7Opacity *2/3}
+    />
     <text class = 'ringFireStory'
       x="90%"
       y={$tweenedStory7Y}
