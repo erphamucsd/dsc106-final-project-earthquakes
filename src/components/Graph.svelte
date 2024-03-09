@@ -326,7 +326,7 @@
       out:fly={{ y: -300, duration: 1000 }}
     >
       <tspan x="22%" dy="-4em">In the 1960, Valdivia, Chile was rocked by the most powerful</tspan>
-      <tspan x="22%" dy="1.8em">earthquake ever recorded. With an astonishing magnitude of 9.5</tspan>
+      <tspan x="22%" dy="1.8em">earthquake ever recorded. With an astonishing magnitude of 9.5,</tspan>
       <tspan x="22%" dy="1.8em">this earthquake is a testament of what the Ring of Fire is</tspan>
       <tspan x="22%" dy="1.8em">capable of creating. This earthquake was so powerful that it</tspan>
       <tspan x="22%" dy="1.8em">created a deadly tsunami that propagated out into the Pacific.</tspan>
