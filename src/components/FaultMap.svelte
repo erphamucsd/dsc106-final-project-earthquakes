@@ -57,7 +57,7 @@
 
   let isVisible = false;
 
-  $: isVisible = index === 8 || index === 9;
+  $: isVisible = index === 9;
 
 </script>
 

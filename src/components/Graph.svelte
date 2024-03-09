@@ -6,7 +6,8 @@
   import earthquakeClipart from './assets/earthquake_image.jpg';
   import sfEarthquake from './assets/sf_earthquake.png';
   import tsunamiImage from './assets/tsunami.jpg';
-  
+  import cloudImage from './assets/clouds.png';
+  import japanEarthquake from './assets/japanEarthquake.jpg';
   export let index, width, height;
 
   // Define transition options
@@ -42,6 +43,8 @@
   }
 
   // Create tweened variables for background story
+  const tweenedCloudOpacity = tweened(0)
+  const tweenedCloudY = tweened(0)
   const tweenedbackgroundIntroOpacity = tweened(0);
   const tweenedStory1Opacity = tweened(0);
   const tweenedStory1Y = tweened(0);
@@ -66,6 +69,7 @@
   const tweenedStory7Y = tweened(0);
   const tweenedStory8Opacity = tweened(0);
   const tweenedStory8Y = tweened(0);
+  const tweenedjapanEarthquakeOpacity = tweened(0)
   const tweenedStory9Opacity = tweened(0);
   const tweenedStory9Y = tweened(0);
   const tweenedStory10Opacity = tweened(0);
@@ -74,17 +78,20 @@
   $: { // background story animations
     if (index === 2) {
       tweenedRectOpacity.set(0)
-
     }
     if (index === 3) {
       tweenedRectOpacity.set(.5)
-
+      tweenedCloudOpacity.set(0)
+      tweenedCloudY.set(height*1.5)
     }
     if (index === 4) {
       tweenedbackgroundIntroOpacity.set(1)
       tweenedStory1Y.set(height*1.5)
       introImageOpacity.set(0)
       tweenedRectOpacity.set(1)
+      tweenedCloudOpacity.set(.3)
+      tweenedCloudY.set(-height/3)
+
      } else {
       tweenedbackgroundIntroOpacity.set(0)
     }
@@ -94,6 +101,9 @@
       tweenedStory2Y.set(height*1.5)
       introImageOpacity.set(1)
       tweenedRectOpacity.set(.5)
+      tweenedCloudOpacity.set(0)
+      tweenedCloudY.set(-height)
+
     } else {
       tweenedStory1Opacity.set(0)
     }
@@ -114,6 +124,7 @@
       tweenedStory4Y.set(height/2)
       introImageOpacity.set(0)
       tweenedRectOpacity.set(0)
+      tweenedjapanEarthquakeOpacity.set(0)
     } else {
       tweenedStory3Opacity.set(0)
     }
@@ -121,12 +132,15 @@
       tweenedStory4Opacity.set(1)
       tweenedStory3Y.set(-20)
       tweenedStory5Y.set(height/2)
+      tweenedjapanEarthquakeOpacity.set(.75)
+
     } else {
       tweenedStory4Opacity.set(0)
     }
     if (index === 9) {
       tweenedStory5Opacity.set(1)
       tweenedStory6Y.set(height/2)
+      tweenedjapanEarthquakeOpacity.set(0)
     } else {
       tweenedStory5Opacity.set(0)
     }
@@ -193,19 +207,26 @@
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >{"By Eric Pham, Katelyn Wong, Vanessa Hu"}</text>
-    
-    <!-- {#if index === 4 || index === 3} -->
+   
     <rect class="grey-rectangle"
-      width="100%"  
-      height="100%" 
-      x="0"
-      y="0"
-      fill="grey"
-      opacity={$tweenedRectOpacity}
+    width="100%"  
+    height="100%" 
+    x="0"
+    y="0"
+    fill="grey"
+    opacity={$tweenedRectOpacity}
+    in:crossfade={{ duration: 1000 }}
+    out:crossfade={{ duration: 1000 }}
+  />
+
+    <image class="clouds"
+    x={-width/4} y={-height*5/12} width="150%" height="150%"
+    xlink:href={cloudImage}
+      opacity={$tweenedCloudOpacity}
       in:crossfade={{ duration: 1000 }}
       out:crossfade={{ duration: 1000 }}
     />
-    <!-- {/if} -->
+
 
     <!-- background text -->
     <text class="backgroundIntro"
@@ -284,36 +305,45 @@
       <tspan x="78%" dy="1.8em">also trigger other catestrofic events like tsunamis</tspan>
       <tspan x="78%" dy="1.8em">and fires.</tspan>
     </text>
+
+    <image class="japanEarthquake"
+    x="{-width*1/12}" y="0" width="115%" height="115%"
+    xlink:href={japanEarthquake}
+      opacity={$tweenedjapanEarthquakeOpacity}
+      in:crossfade={{ duration: 1000 }}
+      out:crossfade={{ duration: 1000 }}
+    />
+   
     <rect 
       width="550" 
       height="340" 
-      x="60%" 
+      x="5%" 
       y={$tweenedStory4Y - 120} 
       rx="20" 
       ry="20" 
       fill="white" 
-      opacity={$tweenedStory4Opacity *6/7}
+      opacity={$tweenedStory4Opacity *3/4}
     />
     <text class = 'impactStory2'
-      x="90%"
+      x="5%"
       y={$tweenedStory4Y}
       text-anchor="middle"
       opacity={$tweenedStory4Opacity}
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >
-      <tspan x="78%" dy="-4em">Although the earthquake itself may last for just a few</tspan>
-      <tspan x="78%" dy="1.8em">minutes, the aftermath of an earthquake can be felt</tspan>
-      <tspan x="78%" dy="1.8em">for weeks to years. Earthquakes can displace people from</tspan>
-      <tspan x="78%" dy="1.8em">their homes and destroy livelihoods in an instant, ultimately</tspan>
-      <tspan x="78%" dy="1.8em">impacting society, the economy, and climate. For example,</tspan>
-      <tspan x="78%" dy="1.8em">he Great East Japan Earthquake in 2011 caused an economic</tspan>
-      <tspan x="78%" dy="1.8em">loss of $360 billion alone. As such, repairing damages</tspan>
-      <tspan x="78%" dy="1.8em">caused by earthquakes can be extremely costly.</tspan>
+      <tspan x="23%" dy="-4em">Although the earthquake itself may last for just a few</tspan>
+      <tspan x="23%" dy="1.8em">minutes, the aftermath of an earthquake can be felt for</tspan>
+      <tspan x="23%" dy="1.8em">weeks to years globally. Earthquakes can displace people from</tspan>
+      <tspan x="23%" dy="1.8em">their homes and destroy livelihoods in an instant, ultimately</tspan>
+      <tspan x="23%" dy="1.8em">impacting society, the economy, and climate. For example,</tspan>
+      <tspan x="23%" dy="1.8em">the Great East Japan Earthquake in 2011 caused an economic</tspan>
+      <tspan x="23%" dy="1.8em">loss of $360 billion alone. As such, repairing damages</tspan>
+      <tspan x="23%" dy="1.8em">caused by earthquakes can be extremely costly.</tspan>
     </text>
     <rect 
       width="550" 
-      height="390" 
+      height="400" 
       x="5%" 
       y={$tweenedStory5Y - 120} 
       rx="20" 
