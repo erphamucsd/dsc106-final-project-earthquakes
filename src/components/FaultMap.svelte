@@ -3,17 +3,15 @@
   import { onMount } from "svelte";
   import faultLines from './assets/faultgeoJson.js';
   export let index;
-  export let geoJsonToFit;
 
   mapboxgl.accessToken =
     "pk.eyJ1Ijoia2F0ZWx5bndvbmciLCJhIjoiY2xzZ3d1b3JlMHhkaTJ2cjJ5bHc5ZHc2cyJ9.1gcsw89CYByE5i-0jUmK8g";
 
   let container;
-  let map;
-  let previousIndex = 0;
+  let FaultMap;
 
   onMount(() => {
-    map = new mapboxgl.Map({
+    FaultMap = new mapboxgl.Map({
       container,
       style: "mapbox://styles/mapbox/light-v10",
       center: [0, 0],
@@ -22,12 +20,12 @@
     });
 
     // fault lines
-    map.on("load", () => {
-		map.addSource("fault_lines", {
+    FaultMap.on("load", () => {
+		FaultMap.addSource("fault_lines", {
 			type: "geojson",
 			data: faultLines,
 		});
-		map.addLayer({
+		FaultMap.addLayer({
     id: "fault_lines",
     type: "line",
     source: "fault_lines",
@@ -39,7 +37,7 @@
 	});
 
     function hideLabelLayers() {
-      const labelLayerIds = map
+      const labelLayerIds = FaultMap
         .getStyle()
         .layers.filter(
           (layer) =>
@@ -48,36 +46,19 @@
         .map((layer) => layer.id);
 
       for (const layerId of labelLayerIds) {
-        map.setLayoutProperty(layerId, "visibility", "none");
+        FaultMap.setLayoutProperty(layerId, "visibility", "none");
       }
     }
 
-    map.on("load", () => {
+    FaultMap.on("load", () => {
       hideLabelLayers();
-      updateBounds();
-      map.on("zoom", updateBounds);
-      map.on("drag", updateBounds);
-      map.on("move", updateBounds);
-    });
+      });
   });
-
-  function updateBounds() {
-    const bounds = map.getBounds();
-    geoJsonToFit.features[0].geometry.coordinates = [
-      bounds._ne.lng,
-      bounds._ne.lat,
-    ];
-    geoJsonToFit.features[1].geometry.coordinates = [
-      bounds._sw.lng,
-      bounds._sw.lat,
-    ];
-  }
 
   let isVisible = false;
 
   $: isVisible = index === 8 || index === 9;
 
-  
 </script>
 
 <svelte:head>
