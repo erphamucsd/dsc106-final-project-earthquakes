@@ -132,7 +132,7 @@
 
     // Socal flyTo
     else if (index === 17 && previousIndex === 16) {
-      QuakeMap.flyTo({center: [-118, 34], zoom: 6, duration: 2000})
+      QuakeMap.flyTo({center: [-118, 34], zoom: 7, duration: 2000})
     } else if (index === 16 && previousIndex === 17) {
       QuakeMap.flyTo({center: [-120, 35], zoom: 4, duration: 2000})
     }
