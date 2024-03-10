@@ -59,25 +59,24 @@
   </div>
 
   <div class="foreground" slot="foreground">
-    <section>Index 0</section>
-    <section>Index 1</section>
-    <section>Index 2</section>
-    <section>Index 3</section>
-    <section>Index 4</section>
-    <section>Index 5</section>
-    <section>Index 6</section>
-    <section>Index 7</section>
-    <section>Index 8</section>
-    <section>Index 9</section>
-    <section>Index 10</section>
-    <section>Index 11</section>
-    <section>Index 12</section>
-    <section>Index 13</section>
-    <section>Index 14</section>
-    <section>Index 15</section>
-    <section>Index 16</section>
-    <section>Index 17</section>
-    <section>Index 18</section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
   </div>
 
 </Scroller>
