@@ -2,7 +2,6 @@
   import { fly } from "svelte/transition";
   import { crossfade } from 'svelte/transition';
   import { tweened } from "svelte/motion";
-  import { cubicOut } from "svelte/easing";
   import earthquakeClipart from './assets/earthquake_image.jpg';
   import sfEarthquake from './assets/sf_earthquake.png';
   import tsunamiImage from './assets/tsunami.jpg';
@@ -337,7 +336,7 @@
     <rect 
       width="520" 
       height="320" 
-      x="4%" 
+      x="50" 
       y={$tweenedStory4Y - 120} 
       rx="20" 
       ry="20" 
@@ -353,20 +352,20 @@
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >
-      <tspan x="26%" dy="-4em">Although the earthquake itself may last for just a few</tspan>
-      <tspan x="26%" dy="1.8em">minutes, the aftermath of an earthquake can be felt for</tspan>
-      <tspan x="26%" dy="1.8em">weeks to years globally. Earthquakes can displace people from</tspan>
-      <tspan x="26%" dy="1.8em">their homes and destroy livelihoods in an instant, ultimately</tspan>
-      <tspan x="26%" dy="1.8em">impacting society, the economy, and climate. For example,</tspan>
-      <tspan x="26%" dy="1.8em">the Great East Japan Earthquake in 2011 caused an economic</tspan>
-      <tspan x="26%" dy="1.8em">loss of $360 billion alone. As such, repairing damages</tspan>
-      <tspan x="26%" dy="1.8em">caused by earthquakes can be extremely costly.</tspan>
+      <tspan x="315" dy="-4em">Although the earthquake itself may last for just a few</tspan>
+      <tspan x="315" dy="1.8em">minutes, the aftermath of an earthquake can be felt for</tspan>
+      <tspan x="315" dy="1.8em">weeks to years globally. Earthquakes can displace people from</tspan>
+      <tspan x="315" dy="1.8em">their homes and destroy livelihoods in an instant, ultimately</tspan>
+      <tspan x="315" dy="1.8em">impacting society, the economy, and climate. For example,</tspan>
+      <tspan x="315" dy="1.8em">the Great East Japan Earthquake in 2011 caused an economic</tspan>
+      <tspan x="315" dy="1.8em">loss of $360 billion alone. As such, repairing damages</tspan>
+      <tspan x="315" dy="1.8em">caused by earthquakes can be extremely costly.</tspan>
     </text>
 
     <rect 
       width="460" 
       height="390" 
-      x="59%" 
+      x="610" 
       y={$tweenedStory5Y - 120} 
       rx="20" 
       ry="20" 
@@ -382,22 +381,22 @@
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >
-      <tspan x="78%" dy="-4em">How are these disastrous earthquakes formed?</tspan>
-      <tspan x="78%" dy="1.8em">Earth’s crust consists of 7 major tectonic plates,</tspan>
-      <tspan x="78%" dy="1.8em">each varying in size and location. When these plates</tspan>
-      <tspan x="78%" dy="1.8em">move, the borders of the tectonic plates, also known</tspan>
-      <tspan x="78%" dy="1.8em">as fault lines, occasionally touch each other, and</tspan>
-      <tspan x="78%" dy="1.8em">these brief moments of interaction are what cause</tspan>
-      <tspan x="78%" dy="1.8em">earthquakes. The friction from the plates touching</tspan>
-      <tspan x="78%" dy="1.8em">creates energy, which is released as waves to Earth's</tspan>
-      <tspan x="78%" dy="1.8em">surface. The amount of pressure that’s produced from</tspan>
-      <tspan x="78%" dy="1.8em">the friction determines how strong the earthquake is.</tspan>
+      <tspan x="840" dy="-4em">How are these disastrous earthquakes formed?</tspan>
+      <tspan x="840" dy="1.8em">Earth’s crust consists of 7 major tectonic plates,</tspan>
+      <tspan x="840" dy="1.8em">each varying in size and location. When these plates</tspan>
+      <tspan x="840" dy="1.8em">move, the borders of the tectonic plates, also known</tspan>
+      <tspan x="840" dy="1.8em">as fault lines, occasionally touch each other, and</tspan>
+      <tspan x="840" dy="1.8em">these brief moments of interaction are what cause</tspan>
+      <tspan x="840" dy="1.8em">earthquakes. The friction from the plates touching</tspan>
+      <tspan x="840" dy="1.8em">creates energy, which is released as waves to Earth's</tspan>
+      <tspan x="840" dy="1.8em">surface. The amount of pressure that’s produced from</tspan>
+      <tspan x="840" dy="1.8em">the friction determines how strong the earthquake is.</tspan>
     </text>
 
     <rect 
       width="480" 
       height="290" 
-      x="2%" 
+      x="80" 
       y={$tweenedStory6Y - 120} 
       rx="20" 
       ry="20" 
@@ -413,19 +412,19 @@
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >
-      <tspan x="22%" dy="-4em">Since earthquakes happen when tectonic plates touch,</tspan>
-      <tspan x="22%" dy="1.8em">almost all earthquakes occur at fault lines. This</tspan>
-      <tspan x="22%" dy="1.8em">map shows each earthquake as a circle on the map, and</tspan>
-      <tspan x="22%" dy="1.8em">we can see that these earthquakes happen on Earth’s</tspan>
-      <tspan x="22%" dy="1.8em">fault lines. A majority of earthquakes are so small</tspan>
-      <tspan x="22%" dy="1.8em">that they go by undetected, but there are some powerful</tspan>
-      <tspan x="22%" dy="1.8em">earthquakes, and these are represented by the red circles.</tspan>
+      <tspan x="320" dy="-4em">Since earthquakes happen when tectonic plates touch,</tspan>
+      <tspan x="320" dy="1.8em">almost all earthquakes occur at fault lines. This</tspan>
+      <tspan x="320" dy="1.8em">map shows each earthquake as a circle on the map, and</tspan>
+      <tspan x="320" dy="1.8em">we can see that these earthquakes happen on Earth’s</tspan>
+      <tspan x="320" dy="1.8em">fault lines. A majority of earthquakes are so small</tspan>
+      <tspan x="320" dy="1.8em">that they go by undetected, but there are some powerful</tspan>
+      <tspan x="320" dy="1.8em">earthquakes, and these are represented by the red circles.</tspan>
     </text>
 
     <rect 
       width="480" 
       height="290" 
-      x="58%" 
+      x="620" 
       y={$tweenedStory7Y - 120} 
       rx="20" 
       ry="20" 
@@ -441,13 +440,13 @@
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >
-      <tspan x="78%" dy="-4em">Most of the earthquakes occur in a horseshoe-shaped</tspan>
-      <tspan x="78%" dy="1.8em">path along the Pacific Ocean, and this region is referred</tspan>
-      <tspan x="78%" dy="1.8em">to as the Ring of Fire. Due to high tectonic activity in</tspan>
-      <tspan x="78%" dy="1.8em">this area, the Ring of Fire is where 90% of earthquakes</tspan>
-      <tspan x="78%" dy="1.8em">and 75% of active volcanoes are located. Many major</tspan>
-      <tspan x="78%" dy="1.8em">earthquakes that have shook our world to its core have</tspan>
-      <tspan x="78%" dy="1.8em">happened along this seismically active region.</tspan>
+      <tspan x="860" dy="-4em">Most of the earthquakes occur in a horseshoe-shaped</tspan>
+      <tspan x="860" dy="1.8em">path along the Pacific Ocean, and this region is referred</tspan>
+      <tspan x="860" dy="1.8em">to as the Ring of Fire. Due to high tectonic activity in</tspan>
+      <tspan x="860" dy="1.8em">this area, the Ring of Fire is where 90% of earthquakes</tspan>
+      <tspan x="860" dy="1.8em">and 75% of active volcanoes are located. Many major</tspan>
+      <tspan x="860" dy="1.8em">earthquakes that have shook our world to its core have</tspan>
+      <tspan x="860" dy="1.8em">happened along this seismically active region.</tspan>
     </text>
 
     <rect 
