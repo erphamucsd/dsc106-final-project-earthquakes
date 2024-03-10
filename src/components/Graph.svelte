@@ -13,25 +13,42 @@
   const titleImage = earthquakeClipart;
 
   // Create tweened variables for intro block
-  const tweenedTitleY = tweened(0);
-  const tweenedSubtitleY = tweened(0);
-  const tweenedTitleImageOpacity = tweened(1);
+  const tweenedTitleY = tweened(-100);
+  const tweenedSubtitleY = tweened(-100);
+  const tweenedTitleImageOpacity = tweened(0);
+
+  let previousIndex = 0;
 
   // Intro block animations
   $: {
-    if (index === 0) { // reset positions when we are at top
+    // reset positions when we are at top
+    if (index === 0) {
       tweenedTitleY.set(-20);
       tweenedSubtitleY.set(-20);
-    } if (0 < index <= 2) { // Title and title image come in
-      tweenedTitleY.set(height * 1 / 6);
       tweenedTitleImageOpacity.set(1);
-    } if (index <= 3) { // Subtitle comes in
-      tweenedSubtitleY.set(height * 1 / 4);
-    } else { // Title, subtitle and image leave
-      tweenedTitleY.set(-20);
-      tweenedSubtitleY.set(-20);
-      tweenedTitleImageOpacity.set(0);
     }
+
+    // title animation
+    if (index == 1 && previousIndex == 0) {
+      tweenedTitleY.set(height * 1 / 6);
+      tweenedSubtitleY.set(height * 1 / 4);
+    } else if (index == 0 && previousIndex == 1) {
+      tweenedTitleY.set(-100);
+      tweenedSubtitleY.set(-100);
+    }
+
+    // background and title disappear
+    else if (index == 4 && previousIndex == 3) {
+      tweenedTitleY.set(-100);
+      tweenedSubtitleY.set(-100);
+      tweenedTitleImageOpacity.set(0);
+    } else if (index == 3 && previousIndex == 4) {
+      tweenedTitleY.set(height * 1 / 6);
+      tweenedSubtitleY.set(height * 1 / 4);
+      tweenedTitleImageOpacity.set(1);
+    }
+
+    previousIndex = index;
   }
 
   // Create tweened variables for background story
@@ -446,13 +463,13 @@
       <tspan x="860" dy="1.8em">this area, the Ring of Fire is where 90% of earthquakes</tspan>
       <tspan x="860" dy="1.8em">and 75% of active volcanoes are located. Many major</tspan>
       <tspan x="860" dy="1.8em">earthquakes that have shook our world to its core have</tspan>
-      <tspan x="860" dy="1.8em">happened along this seismically active region.</tspan>
+      <tspan x="860" dy="1.8em">happened in seismically active region. Here are a few: </tspan>
     </text>
 
     <rect 
     width="550" 
     height="340" 
-    x="1%" 
+    x="30" 
     y={$tweenedStory8Y - 110} 
     rx="20" 
     ry="20" 
@@ -468,21 +485,21 @@
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >
-      <tspan x="24%" dy="-4em">In the 1960, Valdivia, Chile was rocked by the most powerful</tspan>
-      <tspan x="24%" dy="1.8em">earthquake ever recorded. With an astonishing magnitude of 9.5,</tspan>
-      <tspan x="24%" dy="1.8em">this earthquake is a testament of what the Ring of Fire is</tspan>
-      <tspan x="24%" dy="1.8em">capable of creating. This earthquake was so powerful that it</tspan>
-      <tspan x="24%" dy="1.8em">created a deadly tsunami that propagated out into the Pacific.</tspan>
-      <tspan x="24%" dy="1.8em">The tsunami killed 1655 people, killing people as far away as</tspan>
-      <tspan x="24%" dy="1.8em">Hawaii, Japan, and the Philippines. At the end, this quake</tspan>
-      <tspan x="24%" dy="1.8em">injured 3000 people and caused $550 million in damages</tspan>
-      <tspan x="24%" dy="1.8em">in southern Chile alone.</tspan>
+      <tspan x="300" dy="-4em">In the 1960, Valdivia, Chile was rocked by the most powerful</tspan>
+      <tspan x="300" dy="1.8em">earthquake ever recorded. With an astonishing magnitude of 9.5,</tspan>
+      <tspan x="300" dy="1.8em">this earthquake is a testament of what the Ring of Fire is</tspan>
+      <tspan x="300" dy="1.8em">capable of creating. This earthquake was so powerful that it</tspan>
+      <tspan x="300" dy="1.8em">created a deadly tsunami that propagated out into the Pacific.</tspan>
+      <tspan x="300" dy="1.8em">The tsunami killed 1655 people, killing people as far away as</tspan>
+      <tspan x="300" dy="1.8em">Hawaii, Japan, and the Philippines. At the end, this quake</tspan>
+      <tspan x="300" dy="1.8em">injured 3000 people and caused $550 million in damages</tspan>
+      <tspan x="300" dy="1.8em">in southern Chile alone.</tspan>
     </text>
 
     <rect 
     width="590" 
     height="370" 
-    x="57%" 
+    x="640" 
     y={$tweenedStory9Y - 110} 
     rx="20" 
     ry="20" 
