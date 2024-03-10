@@ -10,13 +10,6 @@
   import japanEarthquake from './assets/japanEarthquake.jpg';
   export let index, width, height;
 
-  // Define transition options
-  const tweenOptions = {
-    delay: 0,
-    duration: 800,
-    easing: cubicOut,
-  };
-
   // Define the intro block
   const titleImage = earthquakeClipart;
 
@@ -30,12 +23,12 @@
     if (index === 0) { // reset positions when we are at top
       tweenedTitleY.set(-20);
       tweenedSubtitleY.set(-20);
-    } if (index >= 1) { // Title and title image come in
+    } if (0 < index <= 2) { // Title and title image come in
       tweenedTitleY.set(height * 1 / 6);
       tweenedTitleImageOpacity.set(1);
-    } if (index >= 2) { // Subtitle comes in
+    } if (index <= 3) { // Subtitle comes in
       tweenedSubtitleY.set(height * 1 / 4);
-    } if (index >= 3) { // Title, subtitle and image leave
+    } else { // Title, subtitle and image leave
       tweenedTitleY.set(-20);
       tweenedSubtitleY.set(-20);
       tweenedTitleImageOpacity.set(0);
@@ -180,7 +173,6 @@
   }
 
 </script>
-
 <svg class="graph" width="100%" height="100%">
   <!-- Title image layer with fly transition -->
   <image
@@ -201,6 +193,7 @@
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >{"Shifting Ground: Exploring the Fascinating World of Earthquakes"}</text>
+
     <text class='subtitle'
       x={30}
       y={$tweenedSubtitleY}
@@ -315,15 +308,16 @@
     />
    
     <rect 
-      width="550" 
-      height="340" 
-      x="5%" 
+      width="520" 
+      height="320" 
+      x="4%" 
       y={$tweenedStory4Y - 120} 
       rx="20" 
       ry="20" 
       fill="white" 
       opacity={$tweenedStory4Opacity *3/4}
     />
+
     <text class = 'impactStory2'
       x="5%"
       y={$tweenedStory4Y}
@@ -332,55 +326,58 @@
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >
-      <tspan x="23%" dy="-4em">Although the earthquake itself may last for just a few</tspan>
-      <tspan x="23%" dy="1.8em">minutes, the aftermath of an earthquake can be felt for</tspan>
-      <tspan x="23%" dy="1.8em">weeks to years globally. Earthquakes can displace people from</tspan>
-      <tspan x="23%" dy="1.8em">their homes and destroy livelihoods in an instant, ultimately</tspan>
-      <tspan x="23%" dy="1.8em">impacting society, the economy, and climate. For example,</tspan>
-      <tspan x="23%" dy="1.8em">the Great East Japan Earthquake in 2011 caused an economic</tspan>
-      <tspan x="23%" dy="1.8em">loss of $360 billion alone. As such, repairing damages</tspan>
-      <tspan x="23%" dy="1.8em">caused by earthquakes can be extremely costly.</tspan>
+      <tspan x="26%" dy="-4em">Although the earthquake itself may last for just a few</tspan>
+      <tspan x="26%" dy="1.8em">minutes, the aftermath of an earthquake can be felt for</tspan>
+      <tspan x="26%" dy="1.8em">weeks to years globally. Earthquakes can displace people from</tspan>
+      <tspan x="26%" dy="1.8em">their homes and destroy livelihoods in an instant, ultimately</tspan>
+      <tspan x="26%" dy="1.8em">impacting society, the economy, and climate. For example,</tspan>
+      <tspan x="26%" dy="1.8em">the Great East Japan Earthquake in 2011 caused an economic</tspan>
+      <tspan x="26%" dy="1.8em">loss of $360 billion alone. As such, repairing damages</tspan>
+      <tspan x="26%" dy="1.8em">caused by earthquakes can be extremely costly.</tspan>
     </text>
+
     <rect 
-      width="550" 
-      height="400" 
-      x="5%" 
+      width="460" 
+      height="390" 
+      x="59%" 
       y={$tweenedStory5Y - 120} 
       rx="20" 
       ry="20" 
       fill="white" 
       opacity={$tweenedStory5Opacity *6/7}
     />
+
     <text class = 'faultStory1'
-      x="10%"
+      x="5%"
       y={$tweenedStory5Y}
       text-anchor="middle"
       opacity={$tweenedStory5Opacity}
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >
-      <tspan x="22%" dy="-4em">How are these disastrous earthquakes formed?</tspan>
-      <tspan x="22%" dy="1.8em">Earth’s crust consists of 7 major tectonic plates,</tspan>
-      <tspan x="22%" dy="1.8em">each varying in size and location. When these plates</tspan>
-      <tspan x="22%" dy="1.8em">move, the borders of the tectonic plates, also known</tspan>
-      <tspan x="22%" dy="1.8em">as fault lines, occasionally touch each other, and</tspan>
-      <tspan x="22%" dy="1.8em">these brief moments of interaction are what cause</tspan>
-      <tspan x="22%" dy="1.8em">earthquakes. The friction from the plates touching</tspan>
-      <tspan x="22%" dy="1.8em">creates energy, which is released as waves to Earth's</tspan>
-      <tspan x="22%" dy="1.8em">surface. The amount of pressure that’s produced from</tspan>
-      <tspan x="22%" dy="1.8em">the friction determines how strong the earthquake is.</tspan>
+      <tspan x="78%" dy="-4em">How are these disastrous earthquakes formed?</tspan>
+      <tspan x="78%" dy="1.8em">Earth’s crust consists of 7 major tectonic plates,</tspan>
+      <tspan x="78%" dy="1.8em">each varying in size and location. When these plates</tspan>
+      <tspan x="78%" dy="1.8em">move, the borders of the tectonic plates, also known</tspan>
+      <tspan x="78%" dy="1.8em">as fault lines, occasionally touch each other, and</tspan>
+      <tspan x="78%" dy="1.8em">these brief moments of interaction are what cause</tspan>
+      <tspan x="78%" dy="1.8em">earthquakes. The friction from the plates touching</tspan>
+      <tspan x="78%" dy="1.8em">creates energy, which is released as waves to Earth's</tspan>
+      <tspan x="78%" dy="1.8em">surface. The amount of pressure that’s produced from</tspan>
+      <tspan x="78%" dy="1.8em">the friction determines how strong the earthquake is.</tspan>
     </text>
 
     <rect 
-      width="550" 
-      height="310" 
-      x="5%" 
+      width="480" 
+      height="290" 
+      x="2%" 
       y={$tweenedStory6Y - 120} 
       rx="20" 
       ry="20" 
       fill="white" 
       opacity={$tweenedStory6Opacity *6/7}
     />
+
     <text class = 'faultStory2'
       x="10%"
       y={$tweenedStory6Y}
@@ -397,16 +394,18 @@
       <tspan x="22%" dy="1.8em">that they go by undetected, but there are some powerful</tspan>
       <tspan x="22%" dy="1.8em">earthquakes, and these are represented by the red circles.</tspan>
     </text>
+
     <rect 
-      width="550" 
-      height="310" 
-      x="60%" 
+      width="480" 
+      height="290" 
+      x="58%" 
       y={$tweenedStory7Y - 120} 
       rx="20" 
       ry="20" 
       fill="white" 
       opacity={$tweenedStory7Opacity *2/3}
     />
+
     <text class = 'ringFireStory'
       x="90%"
       y={$tweenedStory7Y}
@@ -417,8 +416,8 @@
     >
       <tspan x="78%" dy="-4em">Most of the earthquakes occur in a horseshoe-shaped</tspan>
       <tspan x="78%" dy="1.8em">path along the Pacific Ocean, and this region is referred</tspan>
-      <tspan x="78%" dy="1.8em">to as the Ring of Fire. Due to high tectonic activity</tspan>
-      <tspan x="78%" dy="1.8em">in this area, the Ring of Fire is where 90% of earthquakes</tspan>
+      <tspan x="78%" dy="1.8em">to as the Ring of Fire. Due to high tectonic activity in</tspan>
+      <tspan x="78%" dy="1.8em">this area, the Ring of Fire is where 90% of earthquakes</tspan>
       <tspan x="78%" dy="1.8em">and 75% of active volcanoes are located. Many major</tspan>
       <tspan x="78%" dy="1.8em">earthquakes that have shook our world to its core have</tspan>
       <tspan x="78%" dy="1.8em">happened along this seismically active region.</tspan>
@@ -427,7 +426,7 @@
     <rect 
     width="550" 
     height="340" 
-    x="0%" 
+    x="1%" 
     y={$tweenedStory8Y - 110} 
     rx="20" 
     ry="20" 
@@ -439,20 +438,19 @@
       x="10%"
       y={$tweenedStory8Y}
       text-anchor="middle"
-      background-color='aqua'
       opacity={$tweenedStory8Opacity}
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >
-      <tspan x="22%" dy="-4em">In the 1960, Valdivia, Chile was rocked by the most powerful</tspan>
-      <tspan x="22%" dy="1.8em">earthquake ever recorded. With an astonishing magnitude of 9.5,</tspan>
-      <tspan x="22%" dy="1.8em">this earthquake is a testament of what the Ring of Fire is</tspan>
-      <tspan x="22%" dy="1.8em">capable of creating. This earthquake was so powerful that it</tspan>
-      <tspan x="22%" dy="1.8em">created a deadly tsunami that propagated out into the Pacific.</tspan>
-      <tspan x="22%" dy="1.8em">The tsunami killed 1655 people, killing people as far away as</tspan>
-      <tspan x="22%" dy="1.8em">Hawaii, Japan, and the Philippines. At the end, this quake</tspan>
-      <tspan x="22%" dy="1.8em">injured 3000 people and caused $550 million in damages</tspan>
-      <tspan x="22%" dy="1.8em">in southern Chile alone.</tspan>
+      <tspan x="24%" dy="-4em">In the 1960, Valdivia, Chile was rocked by the most powerful</tspan>
+      <tspan x="24%" dy="1.8em">earthquake ever recorded. With an astonishing magnitude of 9.5,</tspan>
+      <tspan x="24%" dy="1.8em">this earthquake is a testament of what the Ring of Fire is</tspan>
+      <tspan x="24%" dy="1.8em">capable of creating. This earthquake was so powerful that it</tspan>
+      <tspan x="24%" dy="1.8em">created a deadly tsunami that propagated out into the Pacific.</tspan>
+      <tspan x="24%" dy="1.8em">The tsunami killed 1655 people, killing people as far away as</tspan>
+      <tspan x="24%" dy="1.8em">Hawaii, Japan, and the Philippines. At the end, this quake</tspan>
+      <tspan x="24%" dy="1.8em">injured 3000 people and caused $550 million in damages</tspan>
+      <tspan x="24%" dy="1.8em">in southern Chile alone.</tspan>
     </text>
 
     <text class = 'earthquakeExample2'

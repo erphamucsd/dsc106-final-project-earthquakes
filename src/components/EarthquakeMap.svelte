@@ -104,10 +104,39 @@
     
     // Valdivia flyTo
     else if (index === 12 && previousIndex === 11) {
-      QuakeMap.flyTo({center: [-75, -40], zoom: 3, duration: 2000})
+      QuakeMap.flyTo({center: [-75, -40], zoom: 4, duration: 2000})
     } else if (index === 11 && previousIndex === 12) {
       QuakeMap.flyTo({center: [180, 0], zoom: 1.5, duration: 2000})
     }
+
+    // Japan flyTo
+    else if (index === 13 && previousIndex === 12) {
+      QuakeMap.flyTo({center: [140, 40], zoom: 4, duration: 2000})
+    } else if (index === 12 && previousIndex === 13) {
+      QuakeMap.flyTo({center: [-75, -40], zoom: 4, duration: 2000})
+    }
+    
+    // Banda Ache flyTo
+    else if (index === 14 && previousIndex === 13) {
+      QuakeMap.flyTo({center: [95, 5], zoom: 4, duration: 2000})
+    } else if (index === 13 && previousIndex === 14) {
+      QuakeMap.flyTo({center: [140, 40], zoom: 4, duration: 2000})
+    }
+
+    // California flyTo
+    else if (index === 15 && previousIndex === 14) {
+      QuakeMap.flyTo({center: [-120, 35], zoom: 4, duration: 2000})
+    } else if (index === 14 && previousIndex === 15) {
+      QuakeMap.flyTo({center: [95, 5], zoom: 4, duration: 2000})
+    }
+
+    // Socal flyTo
+    else if (index === 17 && previousIndex === 16) {
+      QuakeMap.flyTo({center: [-118, 34], zoom: 6, duration: 2000})
+    } else if (index === 16 && previousIndex === 17) {
+      QuakeMap.flyTo({center: [-120, 35], zoom: 4, duration: 2000})
+    }
+
     previousIndex = index;
   }
 </script>
