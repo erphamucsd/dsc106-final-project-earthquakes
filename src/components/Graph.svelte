@@ -67,6 +67,12 @@
   const tweenedStory9Y = tweened(0);
   const tweenedStory10Opacity = tweened(0);
   const tweenedStory10Y = tweened(0);
+  const tweenedStory11Y = tweened(0);
+  const tweenedStory11Opacity = tweened(0);
+  const tweenedStory12Y = tweened(0);
+  const tweenedStory12Opacity = tweened(0);
+  const tweenedStory13Y = tweened(0);
+  const tweenedStory13Opacity = tweened(0);
 
   $: { // background story animations
     if (index === 2) {
@@ -169,6 +175,27 @@
       tweenedStory10Y.set(height/2)
     } else {
       tweenedStory10Opacity.set(0)
+    }
+    if (index === 15) {
+      tweenedStory11Opacity.set(1)
+      tweenedStory10Y.set(-20)
+      tweenedStory11Y.set(height/2)
+    } else {
+      tweenedStory11Opacity.set(0)
+    }
+    if (index === 16) {
+      tweenedStory12Opacity.set(1)
+      tweenedStory11Y.set(-20)
+      tweenedStory12Y.set(height/2)
+    } else {
+      tweenedStory12Opacity.set(0)
+    }
+    if (index === 17) {
+      tweenedStory13Opacity.set(1)
+      tweenedStory12Y.set(-20)
+      tweenedStory13Y.set(height/2)
+    } else {
+      tweenedStory13Opacity.set(0)
     }
   }
 
@@ -453,6 +480,17 @@
       <tspan x="24%" dy="1.8em">in southern Chile alone.</tspan>
     </text>
 
+    <rect 
+    width="590" 
+    height="370" 
+    x="57%" 
+    y={$tweenedStory9Y - 110} 
+    rx="20" 
+    ry="20" 
+    fill="white" 
+    opacity={$tweenedStory9Opacity / 2}
+    />
+
     <text class = 'earthquakeExample2'
       x="10%"
       y={$tweenedStory9Y}
@@ -461,8 +499,28 @@
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >
-      <tspan x="22%" dy="-4em">Japan 2011</tspan>
+      <tspan x="78%" dy="-4em">On March 11, 2011, Japan experienced the costliest earthquake</tspan>
+      <tspan x="78%" dy="1.8em">in history. Japan experiences the most earthquakes per year due</tspan>
+      <tspan x="78%" dy="1.8em">to its proximity to several tectonic plates, but this 9.1-magnitude</tspan>
+      <tspan x="78%" dy="1.8em">earthquake was particularly significant due to the extensive damage</tspan>
+      <tspan x="78%" dy="1.8em">it caused. The earthquake created a massive tsunami with waves up to</tspan>
+      <tspan x="78%" dy="1.8em">132 feet, which wiped out homes, businesses, and streets in northeastern</tspan>
+      <tspan x="78%" dy="1.8em">Japan. The tsunami also destroyed the Fukushima nuclear power plant</tspan>
+      <tspan x="78%" dy="1.8em">and caused a radiation leak, which created an exclusion zone around</tspan>
+      <tspan x="78%" dy="1.8em">that area that’s still in effect to this day. All of this resulted in over</tspan>
+      <tspan x="78%" dy="1.8em">18,000 deaths and $235 billion in damages.</tspan>
     </text>
+
+    <rect 
+    width="585" 
+    height="360" 
+    x="3%" 
+    y={$tweenedStory10Y - 110} 
+    rx="20" 
+    ry="20" 
+    fill="white" 
+    opacity={$tweenedStory10Opacity / 2}
+    />
 
     <text class = 'earthquakeExample3'
       x="10%"
@@ -472,7 +530,99 @@
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >
-      <tspan x="22%" dy="-4em">SF earthquake</tspan>
+      <tspan x="24%" dy="-4em">Although the death toll for the 2011 Japan earthquake was high,</tspan>
+      <tspan x="24%" dy="1.8em">the record for the deadliest natural disaster in the 21st century</tspan>
+      <tspan x="24%" dy="1.8em">belongs to the 2004 Indian Ocean earthquake. This 9.1-magnitude</tspan>
+      <tspan x="24%" dy="1.8em">earthquake, which was centered off the west coast of northern</tspan>
+      <tspan x="24%" dy="1.8em">Sumatra, Indonesia, created the most destructive tsunami in history,</tspan>
+      <tspan x="24%" dy="1.8em">impacting 18 different countries. There were over 227,000 casualties</tspan>
+      <tspan x="24%" dy="1.8em">and it left long-term environmental damage to the surrounding area.</tspan>
+      <tspan x="24%" dy="1.8em">Many marine ecosystems suffered lasting damage, and freshwater</tspan>
+      <tspan x="24%" dy="1.8em">supplies were polluted with waste and chemicals.</tspan>
+    </text>
+
+    <rect 
+    width="565" 
+    height="280" 
+    x="4%" 
+    y={$tweenedStory11Y - 110} 
+    rx="20" 
+    ry="20" 
+    fill="white" 
+    opacity={$tweenedStory11Opacity / 2}
+    />
+
+    <text class = 'earthquakeExample4'
+      x="10%"
+      y={$tweenedStory11Y}
+      text-anchor="middle"
+      opacity={$tweenedStory11Opacity}
+      in:fly={{ y: -300, duration: 1000 }}
+      out:fly={{ y: -300, duration: 1000 }}
+    >
+      <tspan x="24%" dy="-4em">The most significant Californian earthquake was the 1906 San</tspan>
+      <tspan x="24%" dy="1.8em">Francisco earthquake, which had a 7.9 magnitude. Unlike the</tspan>
+      <tspan x="24%" dy="1.8em">previously mentioned earthquakes that all generated destructive</tspan>
+      <tspan x="24%" dy="1.8em">tsunamis, the San Francisco earthquake caused a massive fire</tspan>
+      <tspan x="24%" dy="1.8em">that lasted for several days. The earthquake and fire destroyed</tspan>
+      <tspan x="24%" dy="1.8em">over 80% of San Francisco and as many as 3000 people died,</tspan>
+      <tspan x="24%" dy="1.8em">making it the deadliest earthquake in US history.</tspan>
+    </text>
+
+    <rect 
+    width="610" 
+    height="390" 
+    x="2%" 
+    y={$tweenedStory12Y - 110} 
+    rx="20" 
+    ry="20" 
+    fill="white" 
+    opacity={$tweenedStory12Opacity / 2}
+    />
+
+    <text class = 'takeaway1'
+      x="10%"
+      y={$tweenedStory12Y}
+      text-anchor="middle"
+      opacity={$tweenedStory12Opacity}
+      in:fly={{ y: -300, duration: 1000 }}
+      out:fly={{ y: -300, duration: 1000 }}
+    >
+      <tspan x="24%" dy="-4em">As we can see on the map, the San Andreas fault line runs</tspan>
+      <tspan x="24%" dy="1.8em">through California, which makes California prone to earthquakes.</tspan>
+      <tspan x="24%" dy="1.8em">However, the San Andreas has been in a seismic drought due to the</tspan>
+      <tspan x="24%" dy="1.8em">lack of major earthquakes in California. This fault line has a</tspan>
+      <tspan x="24%" dy="1.8em">history of producing massive earthquakes every 180 years, but it's</tspan>
+      <tspan x="24%" dy="1.8em">been over 300 years since Southern California experienced a major</tspan>
+      <tspan x="24%" dy="1.8em">earthquake. Although this may seem like good news, this unfortunately</tspan>
+      <tspan x="24%" dy="1.8em">means that there could be a strong earthquake coming in the future.</tspan>
+      <tspan x="24%" dy="1.8em">Some studies estimate as high as a 60% chance of an earthquake with</tspan>
+      <tspan x="24%" dy="1.8em">a 6.5-magnitude or stronger striking the LA region in the next 30 years.</tspan>
+    </text>
+
+    <rect 
+    width="510" 
+    height="170" 
+    x="6%" 
+    y={$tweenedStory13Y - 110} 
+    rx="20" 
+    ry="20" 
+    fill="white" 
+    opacity={$tweenedStory13Opacity / 2}
+    />
+
+    <text class = 'takeaway2'
+      x="10%"
+      y={$tweenedStory13Y}
+      text-anchor="middle"
+      opacity={$tweenedStory13Opacity}
+      in:fly={{ y: -300, duration: 1000 }}
+      out:fly={{ y: -300, duration: 1000 }}
+    >
+      <tspan x="24%" dy="-4em">Due to this high likelihood, it’s important to be prepared</tspan>
+      <tspan x="24%" dy="1.8em">for an earthquake. We’ve seen the devastating impact that</tspan>
+      <tspan x="24%" dy="1.8em">earthquakes have, so make sure you have an idea of what to</tspan>
+      <tspan x="24%" dy="1.8em">do if you ever experience a major earthquake.</tspan>
     </text>
   {/if}
 </svg>
