@@ -126,6 +126,7 @@
 
 <main>
   <div class="overlay">
+    <p class="slider-text">{slider_time}</p>
 		<label>{slider_label}</label>
 		<input
 			id="slider"
@@ -135,7 +136,6 @@
       step="10"
 			bind:value={slider_time}
 		/>
-    <p class="slider-text">{slider_time}</p>
 	</div>
 </main>
 
@@ -167,6 +167,7 @@
   }
 
   .slider-text {
-    position: fixed;
+    position: absolute;
+
   }
 </style>
