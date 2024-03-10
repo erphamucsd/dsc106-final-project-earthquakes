@@ -80,7 +80,7 @@
   </div>
 
 </Scroller>
-  <h1>TESTING</h1>
+  <h1>Earthquake Interactive</h1>
   <StaticMap bind:geoJsonToFit/>
 </main>
 
