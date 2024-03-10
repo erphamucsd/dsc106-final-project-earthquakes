@@ -30,8 +30,8 @@
 
     // title animation
     if (index == 1 && previousIndex == 0) {
-      tweenedTitleY.set(height * 1 / 6);
-      tweenedSubtitleY.set(height * 1 / 4);
+      tweenedTitleY.set(height * 1 / 5);
+      tweenedSubtitleY.set(height * 1 / 3.5);
     } else if (index == 0 && previousIndex == 1) {
       tweenedTitleY.set(-100);
       tweenedSubtitleY.set(-100);
@@ -43,8 +43,8 @@
       tweenedSubtitleY.set(-100);
       tweenedTitleImageOpacity.set(0);
     } else if (index == 3 && previousIndex == 4) {
-      tweenedTitleY.set(height * 1 / 6);
-      tweenedSubtitleY.set(height * 1 / 4);
+      tweenedTitleY.set(height * 1 / 5);
+      tweenedSubtitleY.set(height * 1 / 3.5);
       tweenedTitleImageOpacity.set(1);
     }
 
