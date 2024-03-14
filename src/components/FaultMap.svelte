@@ -78,7 +78,7 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 2s, visibility 2s;
-    outline: blue solid 3px;
+    outline: rgb(142, 142, 142) solid 3px;
   }
 
   .map.visible {

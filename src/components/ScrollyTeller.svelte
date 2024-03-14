@@ -55,6 +55,9 @@
     <div class="progress-bars">
       <p>current section: <strong>{index + 1}/{count}</strong></p>
       <progress value={count ? (index + 1) / count : 0} />
+      <p></p>
+      <progress value={offset || 0} />
+    
     </div>
   </div>
 
@@ -90,7 +93,6 @@
     width: 100%;
     height: 100vh;
     position: relative;
-    outline: green solid 3px;
   }
 
   .foreground {
@@ -100,10 +102,15 @@
     position: relative;
   }
 
+  .progress-bars progress {
+    background-color: orange !important;
+  }
+
   .progress-bars {
     position: absolute;
-    background: rgba(48, 213, 45, 0.2) /*  40% opaque */;
+    background: rgba(153, 153, 153, 0.2) /*  40% opaque */;
     visibility: visible;
+
   }
 
   section {
