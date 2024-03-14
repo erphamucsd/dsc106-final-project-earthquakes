@@ -588,7 +588,7 @@
     <rect 
     width="550" 
     height="360" 
-    x="520" 
+    x="40" 
     y={$tweenedStory12Y - 120} 
     rx="20" 
     ry="20" 
@@ -604,15 +604,15 @@
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >
-      <tspan x="800" dy="-4em">The San Andreas fault line runs through California,</tspan>
-      <tspan x="800" dy="1.8em">making our state very prown to earthquakes. Scarily </tspan>
-      <tspan x="800" dy="1.8em">enough, this fault line has not produced a massive earthquake</tspan>
-      <tspan x="800" dy="1.8em">in over 300 years. This is not at all good news because fault lines</tspan>
-      <tspan x="800" dy="1.8em">build up stress over time, meaning that when the fault does slip</tspan>
-      <tspan x="800" dy="1.8em">a huge amount of energy will be released in the form of an</tspan>
-      <tspan x="800" dy="1.8em">earthquake. Some studies estimate as high as a 60% chance of an</tspan>
-      <tspan x="800" dy="1.8em">earthquake with a 6.5-magnitude or stronger striking the </tspan>
-      <tspan x="800" dy="1.8em">Southern California region in the next 30 years.</tspan>
+      <tspan x="320" dy="-4em">The San Andreas fault line runs through California,</tspan>
+      <tspan x="320" dy="1.8em">making our state very prown to earthquakes. Scarily </tspan>
+      <tspan x="320" dy="1.8em">enough, this fault line has not produced a massive earthquake</tspan>
+      <tspan x="320" dy="1.8em">in over 300 years. This is not at all good news because fault lines</tspan>
+      <tspan x="320" dy="1.8em">build up stress over time, meaning that when the fault does slip</tspan>
+      <tspan x="320" dy="1.8em">a huge amount of energy will be released in the form of an</tspan>
+      <tspan x="320" dy="1.8em">earthquake. Some studies estimate as high as a 60% chance of an</tspan>
+      <tspan x="320" dy="1.8em">earthquake with a 6.5-magnitude or stronger striking the </tspan>
+      <tspan x="320" dy="1.8em">Southern California region in the next 30 years.</tspan>
     </text>
 
     <rect 
@@ -634,15 +634,15 @@
       in:fly={{ y: -300, duration: 1000 }}
       out:fly={{ y: -300, duration: 1000 }}
     >
-      <tspan x="24%" dy="-4em">Major earthquakes are silent killers because they rarely</tspan>
-      <tspan x="24%" dy="1.8em">occur, but when they do, they cause millions in damage</tspan>
-      <tspan x="24%" dy="1.8em">and thousands of deaths. Taking precautions from </tspan>
-      <tspan x="24%" dy="1.8em">other regions hit by earthquakes in the Ring of Fire,</tspan>
-      <tspan x="24%" dy="1.8em">it's important, now more than ever, to be prepared</tspan>
-      <tspan x="24%" dy="1.8em">for the big one. Earthquake preparedness takes</tspan>
-      <tspan x="24%" dy="1.8em">many forms, and can look like building retrofitting,</tspan>
-      <tspan x="24%" dy="1.8em">practice drills, and education/awareness. A major</tspan>
-      <tspan x="24%" dy="1.8em">California earthquake is not question of if, but when.</tspan>
+      <tspan x="300" dy="-4em">Major earthquakes are silent killers because they rarely</tspan>
+      <tspan x="300" dy="1.8em">occur, but when they do, they cause millions in damage</tspan>
+      <tspan x="300" dy="1.8em">and thousands of deaths. Taking precautions from </tspan>
+      <tspan x="300" dy="1.8em">other regions hit by earthquakes in the Ring of Fire,</tspan>
+      <tspan x="300" dy="1.8em">it's important, now more than ever, to be prepared</tspan>
+      <tspan x="300" dy="1.8em">for the big one. Earthquake preparedness takes</tspan>
+      <tspan x="300" dy="1.8em">many forms, and can look like building retrofitting,</tspan>
+      <tspan x="300" dy="1.8em">practice drills, and education/awareness. A major</tspan>
+      <tspan x="300" dy="1.8em">California earthquake is not question of if, but when.</tspan>
     </text>
   {/if}
 </svg>
