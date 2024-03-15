@@ -159,6 +159,7 @@
     visibility: hidden;
     transition: opacity 2s, visibility 2s;
     outline: rgb(142, 142, 142) solid 3px;
+    z-index: 999;
   }
 
   .map.visible {

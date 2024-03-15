@@ -85,6 +85,18 @@
 </Scroller>
   <h1>Earthquake Interactive</h1>
   <StaticMap bind:geoJsonToFit/>
+  <div>
+  <h1>Demo Video</h1>
+    <iframe class="video"
+      title="YouTube Video"
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/0DTqqdwqN4g"
+      frameborder="0"
+      allowfullscreen
+      style="position: relative; bottom: 0; left: 50%; transform: translateX(-50%); z-index: 999;"
+    ></iframe>
+</div>
 </main>
 
 
@@ -119,5 +131,15 @@
     padding: 1em;
     margin: 0 0 2em 0;
   }
+
+  .video {
+    width: 70%; /* Fixed width for standard YouTube embed */
+    height: 70vh; /* Fixed height for standard YouTube embed */
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
 
 </style>
