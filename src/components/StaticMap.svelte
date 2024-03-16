@@ -181,5 +181,4 @@ on:click={slider_time = "Slide For Decade"}
     position: absolute;
     right: 15vh;
     }
-
 </style>
