@@ -139,6 +139,12 @@
 	</div>
 </main>
 
+<button 
+on:click={StaticMap.setFilter('earthquakePoints', null)}
+on:click={slider_time = "Slide For Decade"}
+>Reset Map</button>
+
+
 <svelte:head>
   <link
     rel="stylesheet"
@@ -169,6 +175,11 @@
 
   .slider-text {
     position: absolute;
-
   }
+
+  button {
+    position: absolute;
+    right: 15vh;
+    }
+
 </style>

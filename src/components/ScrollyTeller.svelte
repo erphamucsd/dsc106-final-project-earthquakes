@@ -83,7 +83,7 @@
   </div>
 
 </Scroller>
-  <h1>Earthquake Interactive</h1>
+  <h1>Earthquakes by the Decade</h1>
   <StaticMap bind:geoJsonToFit/>
   <div>
   <h1>Demo Video</h1>
