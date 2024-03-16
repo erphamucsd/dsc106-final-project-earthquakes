@@ -30,8 +30,8 @@
 
     // title animation
     if (index == 1 && previousIndex == 0) {
-      tweenedTitleY.set(height * 1 / 5);
-      tweenedSubtitleY.set(height * 1 / 3.5);
+      tweenedTitleY.set(height * 1 / 4.25);
+      tweenedSubtitleY.set(height * 1 / 3.25);
     } else if (index == 0 && previousIndex == 1) {
       tweenedTitleY.set(-100);
       tweenedSubtitleY.set(-100);
