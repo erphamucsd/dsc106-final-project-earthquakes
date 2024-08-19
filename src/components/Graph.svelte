@@ -338,7 +338,7 @@
       <tspan x="78%" dy="1.8em">devastating natural disasters. Not only are they </tspan>
       <tspan x="78%" dy="1.8em">difficult to predict and prepare for compared to</tspan>
       <tspan x="78%" dy="1.8em">other types of natural disasters, earthquakes can</tspan>
-      <tspan x="78%" dy="1.8em">also trigger other catestrofic events like tsunamis</tspan>
+      <tspan x="78%" dy="1.8em">also trigger other catastrophic events like tsunamis</tspan>
       <tspan x="78%" dy="1.8em">and fires.</tspan>
     </text>
 
